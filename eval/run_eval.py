@@ -23,6 +23,10 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
 
 from engine.config import GOLD_DIR, RESULTS_DIR
 from engine.sow import extract_sow
@@ -49,13 +53,22 @@ def load_sow_text(sow_file: str) -> str:
     return p.read_text(encoding="utf-8")
 
 
+_SOW_CACHE: dict[tuple[str, str], tuple[SOWFacts, list[str]]] = {}
+
+def get_cached_sow(sow_file: str, sow_text: str, model: str) -> tuple[SOWFacts, list[str]]:
+    key = (sow_file, model)
+    if key not in _SOW_CACHE:
+        _SOW_CACHE[key] = extract_sow(sow_text, model=model)
+    return _SOW_CACHE[key]
+
+
 def run_pipeline_on_case(case: dict, model: str) -> list[dict]:
     """Run the full pipeline on one gold case. Returns list of result dicts."""
     sow_text = load_sow_text(case["sow_file"])
     message  = case["message"]
 
-    # S1: Extract SOW (cached per SOW file in practice)
-    facts, warnings = extract_sow(sow_text, model=model)
+    # S1: Extract SOW (cached per SOW file)
+    facts, warnings = get_cached_sow(case["sow_file"], sow_text, model=model)
 
     # S3: Split request
     split = split_requests(message, model=model)

@@ -185,26 +185,22 @@ def decide(
 
     # R3: Revision quota
     elif request.type == "revision":
-        if sow.revision_rounds is None:
-            hard = ("gray_area", "R3")
-        elif quota.get("revisions_used", 0) >= sow.revision_rounds:
+        if sow.revision_rounds is not None and quota.get("revisions_used", 0) >= sow.revision_rounds:
             hard = ("out_of_scope", "R3")
-        else:
-            # Within quota — check for vague clause (R4)
-            if (
-                request.magnitude == "substantial"
-                and _vague_revision_clause(sow, issues)
-            ):
-                hard = ("gray_area", "R4")
-            # else: in_scope; let LLM verdict flow through
+        elif request.magnitude == "substantial" and _vague_revision_clause(sow, issues):
+            hard = ("gray_area", "R4")
+        elif sow.revision_rounds is None and request.magnitude == "substantial":
+            hard = ("gray_area", "R3")
+        # else: minor revision or within quota → let LLM verdict flow through
 
     # R5: New feature/deliverable not in scope
     elif request.type in ("new_feature", "new_deliverable"):
-        if sow.deliverables:
-            if not _deliverable_listed(request.request_text, sow.deliverables):
+        known_items = (sow.deliverables or []) + (sow.pages or [])
+        if known_items:
+            if not _deliverable_listed(request.request_text, known_items):
                 hard = ("out_of_scope", "R5")
         else:
-            # No deliverable list → vague clause → gray_area
+            # No deliverable or pages list → vague clause → gray_area
             hard = ("gray_area", "R5")
 
     # R6: Timeline change

@@ -26,6 +26,15 @@ def load_all_results() -> list[dict]:
                 results.append(json.load(fh))
         except Exception:
             pass
+    for f in raw_dir.glob("backboard_*.json"):
+        try:
+            with f.open(encoding="utf-8") as fh:
+                d = json.load(fh)
+                d["mode"] = "backboard"
+                d["n_requests"] = len(d.get("details", []))
+                results.append(d)
+        except Exception:
+            pass
     return results
 
 
