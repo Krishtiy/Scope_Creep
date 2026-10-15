@@ -38,8 +38,10 @@ desktop.ini
 .env
 .env.local
 
-# Entire session files (captured locally)
-.entire/
+# Entire session files (handled by .entire/.gitignore)
+.entire/*
+!.entire/settings.json
+!.entire/.gitignore
 
 # pytest cache
 .pytest_cache/
