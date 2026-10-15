@@ -1,0 +1,347 @@
+[
+  {
+    "sow": "S1",
+    "sow_file": "S1_bakery.txt",
+    "split": "dev",
+    "message": "Can you add a blog page so I can post recipes?",
+    "requests": [
+      {
+        "text": "add a blog page so I can post recipes",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Home, Menu, About Us, Contact",
+        "notes": "Blog page is not in the listed 4 pages"
+      }
+    ]
+  },
+  {
+    "sow": "S1",
+    "sow_file": "S1_bakery.txt",
+    "split": "dev",
+    "message": "Can you update the text on the homepage to say 'Award-Winning Bakery'?",
+    "requests": [
+      {
+        "text": "update the text on the homepage to say 'Award-Winning Bakery'",
+        "label": "in_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Home page",
+        "notes": "Text change on existing page, within minor revisions"
+      }
+    ]
+  },
+  {
+    "sow": "S1",
+    "sow_file": "S1_bakery.txt",
+    "split": "dev",
+    "message": "Can you add online ordering so customers can pre-order cakes?",
+    "requests": [
+      {
+        "text": "add online ordering so customers can pre-order cakes",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Pages: Home, Menu, About Us, Contact",
+        "notes": "E-commerce/ordering not listed, not excluded explicitly but clearly not in scope"
+      }
+    ]
+  },
+  {
+    "sow": "S1",
+    "sow_file": "S1_bakery.txt",
+    "split": "dev",
+    "message": "The design doesn't feel quite right. Can you redo it to look more upscale?",
+    "requests": [
+      {
+        "text": "redo it to look more upscale",
+        "label": "gray_area",
+        "difficulty": "subtle",
+        "sow_clause": "minor revisions",
+        "notes": "Vague revision clause + subjective request = gray_area"
+      }
+    ]
+  },
+  {
+    "sow": "S2",
+    "sow_file": "S2_login.txt",
+    "split": "dev",
+    "message": "Can you add Google login so users can sign in with their Google account?",
+    "requests": [
+      {
+        "text": "add Google login so users can sign in with their Google account",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Social login (Google, Facebook, Apple)",
+        "notes": "Explicitly excluded: Social login (Google, Facebook, Apple)"
+      }
+    ]
+  },
+  {
+    "sow": "S2",
+    "sow_file": "S2_login.txt",
+    "split": "dev",
+    "message": "I found a bug on the login page — clicking submit twice creates duplicate sessions.",
+    "requests": [
+      {
+        "text": "clicking submit twice creates duplicate sessions",
+        "label": "in_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Login page, Session management",
+        "notes": "Bug fix on delivered in-scope work, within 2 revision rounds"
+      }
+    ]
+  },
+  {
+    "sow": "S2",
+    "sow_file": "S2_login.txt",
+    "split": "dev",
+    "message": "Can you also add an admin panel where I can manage users and reset their passwords?",
+    "requests": [
+      {
+        "text": "add an admin panel where I can manage users and reset their passwords",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Admin dashboard or user management panel",
+        "notes": "Explicitly excluded"
+      }
+    ]
+  },
+  {
+    "sow": "S2",
+    "sow_file": "S2_login.txt",
+    "split": "dev",
+    "message": "Can you add a 'Remember me' checkbox on the login form?",
+    "requests": [
+      {
+        "text": "add a 'Remember me' checkbox on the login form",
+        "label": "gray_area",
+        "difficulty": "subtle",
+        "sow_clause": "Login page",
+        "notes": "Login page is in scope but persistent sessions (remember me) is arguably a new feature"
+      }
+    ]
+  },
+  {
+    "sow": "S3",
+    "sow_file": "S3_blog.txt",
+    "split": "test",
+    "message": "Can you also write 3 email newsletters for next month?",
+    "requests": [
+      {
+        "text": "write 3 email newsletters for next month",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Email newsletters",
+        "notes": "Explicitly excluded: Email newsletters"
+      }
+    ]
+  },
+  {
+    "sow": "S3",
+    "sow_file": "S3_blog.txt",
+    "split": "test",
+    "message": "The second post is great! Just one small change — in the intro, change 'enterprise software' to 'business software'.",
+    "requests": [
+      {
+        "text": "change 'enterprise software' to 'business software'",
+        "label": "in_scope",
+        "difficulty": "obvious",
+        "sow_clause": "One round of revisions per post",
+        "notes": "Tiny text change, within revision round"
+      }
+    ]
+  },
+  {
+    "sow": "S3",
+    "sow_file": "S3_blog.txt",
+    "split": "test",
+    "message": "The tone isn't quite right across all 4 posts. Can you rewrite them to sound more casual and conversational?",
+    "requests": [
+      {
+        "text": "rewrite them to sound more casual and conversational",
+        "label": "gray_area",
+        "difficulty": "subtle",
+        "sow_clause": "One round of revisions per post",
+        "notes": "Rewriting 4 posts is substantial — borderline new work vs revision"
+      }
+    ]
+  },
+  {
+    "sow": "S3",
+    "sow_file": "S3_blog.txt",
+    "split": "test",
+    "message": "Can you write social media captions for each of the 4 posts?",
+    "requests": [
+      {
+        "text": "write social media captions for each of the 4 posts",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Social media captions",
+        "notes": "Explicitly excluded"
+      }
+    ]
+  },
+  {
+    "sow": "S4",
+    "sow_file": "S4_redesign.txt",
+    "split": "test",
+    "message": "Can you add a Portfolio page to show our past work?",
+    "requests": [
+      {
+        "text": "add a Portfolio page to show our past work",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "6 redesigned pages: Home, Services, About, Case Studies, Blog, Contact",
+        "notes": "Portfolio page not in the explicit 6-page list"
+      }
+    ]
+  },
+  {
+    "sow": "S4",
+    "sow_file": "S4_redesign.txt",
+    "split": "test",
+    "message": "The Contact page looks great. Just one change — can you make the form button green instead of blue?",
+    "requests": [
+      {
+        "text": "make the form button green instead of blue",
+        "label": "in_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Up to 3 rounds of design revisions",
+        "notes": "Minor style tweak on in-scope page, within revision rounds"
+      }
+    ]
+  },
+  {
+    "sow": "S4",
+    "sow_file": "S4_redesign.txt",
+    "split": "test",
+    "message": "Can you also add an online shop so people can book consultations directly?",
+    "requests": [
+      {
+        "text": "add an online shop so people can book consultations directly",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "E-commerce functionality",
+        "notes": "Explicitly excluded"
+      }
+    ]
+  },
+  {
+    "sow": "S4",
+    "sow_file": "S4_redesign.txt",
+    "split": "test",
+    "message": "Can we change the deadline for wireframes from Nov 15 to Dec 1?",
+    "requests": [
+      {
+        "text": "change the deadline for wireframes from Nov 15 to Dec 1",
+        "label": "gray_area",
+        "difficulty": "obvious",
+        "sow_clause": "Wireframes by Nov 15",
+        "notes": "Timeline change — always gray_area (R6), needs discussion"
+      }
+    ]
+  },
+  {
+    "sow": "S5",
+    "sow_file": "S5_video.txt",
+    "split": "test",
+    "message": "I love the edits! Just add a short animated intro logo at the start of each video.",
+    "requests": [
+      {
+        "text": "add a short animated intro logo at the start of each video",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "Motion graphics or custom animations",
+        "notes": "Explicitly excluded: Motion graphics or custom animations"
+      }
+    ]
+  },
+  {
+    "sow": "S5",
+    "sow_file": "S5_video.txt",
+    "split": "test",
+    "message": "There's a section at 4:32 where the audio cuts out. Can you fix it?",
+    "requests": [
+      {
+        "text": "the audio cuts out at 4:32, can you fix it",
+        "label": "in_scope",
+        "difficulty": "obvious",
+        "sow_clause": "audio cleanup",
+        "notes": "Audio cleanup is explicitly in scope"
+      }
+    ]
+  },
+  {
+    "sow": "S5",
+    "sow_file": "S5_video.txt",
+    "split": "test",
+    "message": "This month I have 10 videos instead of 8. Can you edit all 10?",
+    "requests": [
+      {
+        "text": "edit all 10 videos this month",
+        "label": "out_of_scope",
+        "difficulty": "obvious",
+        "sow_clause": "8 workout videos per month",
+        "notes": "2 extra videos beyond the 8 specified"
+      }
+    ]
+  },
+  {
+    "sow": "S5",
+    "sow_file": "S5_video.txt",
+    "split": "test",
+    "message": "Can you also create a 60-second highlight reel from this month's videos for Instagram?",
+    "requests": [
+      {
+        "text": "create a 60-second highlight reel for Instagram",
+        "label": "out_of_scope",
+        "difficulty": "subtle",
+        "sow_clause": "8 workout videos per month",
+        "notes": "New deliverable — highlight reel not listed in SOW deliverables"
+      }
+    ]
+  },
+  {
+    "sow": "S6",
+    "sow_file": "S6_trap.txt",
+    "split": "test",
+    "message": "Can you also build a mobile app version of the CRM?",
+    "requests": [
+      {
+        "text": "build a mobile app version of the CRM",
+        "label": "out_of_scope",
+        "difficulty": "subtle",
+        "sow_clause": "lead management, contact tracking, and reporting features",
+        "notes": "Mobile app not listed; 'including but not limited to' makes this tricky but mobile app is a major new deliverable"
+      }
+    ]
+  },
+  {
+    "sow": "S6",
+    "sow_file": "S6_trap.txt",
+    "split": "test",
+    "message": "The lead management module looks good. Can you tweak the colour scheme to match our brand?",
+    "requests": [
+      {
+        "text": "tweak the colour scheme to match our brand",
+        "label": "in_scope",
+        "difficulty": "obvious",
+        "sow_clause": "unlimited revisions until the client is satisfied",
+        "notes": "Unlimited revisions — in scope, but the clause itself is problematic"
+      }
+    ]
+  },
+  {
+    "sow": "S6",
+    "sow_file": "S6_trap.txt",
+    "split": "test",
+    "message": "We need this ready in 2 weeks. Can you commit to that?",
+    "requests": [
+      {
+        "text": "commit to a 2-week delivery",
+        "label": "gray_area",
+        "difficulty": "obvious",
+        "sow_clause": "Timeline: To be determined",
+        "notes": "Timeline is undefined — this is a negotiation, not a scope check"
+      }
+    ]
+  }
+]

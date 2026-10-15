@@ -1,0 +1,27 @@
+Website Redesign — Statement of Work
+
+Project: Full redesign of GreenLeaf Consulting website
+Freelancer: [Your Name]  |  Client: GreenLeaf Consulting
+
+Deliverables (all-inclusive, nothing else is included):
+- 6 redesigned pages: Home, Services, About, Case Studies, Blog, Contact
+- Mobile-responsive design for all 6 pages
+- Integration with the client's existing WordPress installation
+- Up to 3 rounds of design revisions (wireframe stage) and 2 rounds of development revisions
+- Final handover: source files, WordPress theme export, 30-minute walkthrough call
+
+Revision definition: A revision round is one consolidated document of changes submitted
+by the client. Revisions to finalized and approved stages are out of scope.
+
+Excluded (explicitly not included):
+- New pages beyond the 6 listed above
+- E-commerce functionality
+- Custom plugin development
+- SEO audit or copywriting
+- Hosting setup or domain management
+- Ongoing maintenance after handover
+
+Timeline: Wireframes by Nov 15. Development by Dec 1. Final delivery by Dec 15, 2026.
+Payment: $3,000 total. $1,000 on signing, $1,000 on wireframe approval, $1,000 on final delivery.
+Client responsibilities: Provide brand assets (logo, fonts, colours) by Oct 30.
+                        Provide all written content by Nov 10.

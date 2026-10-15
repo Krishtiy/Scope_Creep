@@ -1,0 +1,29 @@
+patterns:
+  # High severity — almost always cause disputes
+  - {re: "\\bminor (revisions?|changes?|tweaks?)\\b",        severity: high,   tag: undefined_quantity}
+  - {re: "\\ba few\\b",                                       severity: high,   tag: undefined_quantity}
+  - {re: "\\bunlimited\\b",                                   severity: high,   tag: no_limit}
+  - {re: "\\bincluding but not limited to\\b",               severity: high,   tag: open_ended_list}
+  - {re: "\\b(ongoing|continuous|unlimited) support\\b",     severity: high,   tag: no_end_date}
+  - {re: "\\bas (many|much|needed|required)\\b",             severity: high,   tag: open_ended_scope}
+  - {re: "\\buntil (the client|you are|they are) (happy|satisfied)\\b", severity: high, tag: no_limit}
+  - {re: "\\bfull ownership\\b",                             severity: high,   tag: ip_risk}
+
+  # Medium severity — often cause confusion
+  - {re: "\\b(etc\\.?|and so on|and more)\\b",               severity: medium, tag: open_ended_list}
+  - {re: "\\bas needed\\b",                                   severity: medium, tag: open_ended_scope}
+  - {re: "\\breasonable\\b",                                  severity: medium, tag: subjective_term}
+  - {re: "\\b(fast|quick|asap|prompt)\\b",                   severity: medium, tag: no_deadline}
+  - {re: "\\bsimilar (to|style)\\b",                         severity: medium, tag: subjective_term}
+  - {re: "\\bprofessional (look|feel|quality)\\b",           severity: medium, tag: subjective_term}
+  - {re: "\\bminor (adjustments?|edits?|fixes?)\\b",         severity: medium, tag: undefined_quantity}
+  - {re: "\\bin a timely (manner|fashion)\\b",               severity: medium, tag: no_deadline}
+  - {re: "\\bnet[ -]?90\\b",                                 severity: medium, tag: payment_risk}
+  - {re: "\\bupon (final approval|completion|acceptance)\\b", severity: medium, tag: payment_risk}
+
+  # Low severity — worth noting, rarely cause major disputes
+  - {re: "\\bsome\\b",                                        severity: low,    tag: undefined_quantity}
+  - {re: "\\boccasionally\\b",                               severity: low,    tag: undefined_frequency}
+  - {re: "\\bif needed\\b",                                   severity: low,    tag: open_ended_scope}
+  - {re: "\\bsubject to change\\b",                          severity: low,    tag: open_ended_scope}
+  - {re: "\\bgood faith\\b",                                  severity: low,    tag: subjective_term}

@@ -1,0 +1,17 @@
+base_hours:
+  new_page: 4          # hours to design and build one new page
+  revision: 3          # hours for one round of substantial revisions
+  new_feature: 8       # hours for a new feature (e.g. search, login)
+  new_deliverable: 6   # hours for a new deliverable (e.g. extra blog post, logo variant)
+  timeline_change: 0   # timeline changes don't have a direct hour cost
+  other: 2             # catch-all for unclassified requests
+
+size_multiplier:
+  S: 0.5               # small/tweak: half the base hours
+  M: 1.0               # medium: standard hours
+  L: 2.0               # large: double the base hours
+
+# NOTE: These are ILLUSTRATIVE ESTIMATES only.
+# Real project estimates depend on complexity, tech stack, and freelancer's workflow.
+# Always review and adjust before sending a change order.
+# Label all estimates as "illustrative" in your replies.

@@ -1,0 +1,17 @@
+Comprehensive Web Application — Statement of Work
+
+Project: Custom CRM web application for SalesForce Partners LLC
+
+Scope: Developer will build a web-based CRM including but not limited to:
+lead management, contact tracking, and reporting features.
+
+Revisions: Unlimited revisions until the client is satisfied with the final product.
+
+Intellectual Property: Upon payment, the client will have full ownership of all work product,
+including source code, designs, and any related materials.
+
+Payment: Net-90 payment terms. Full payment of $8,000 due 90 days after final delivery.
+
+Exclusions: None stated.
+
+Timeline: To be determined based on project requirements.

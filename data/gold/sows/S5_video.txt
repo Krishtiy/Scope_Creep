@@ -1,0 +1,26 @@
+Video Editing Package — Statement of Work
+
+Project: Video editing for FitLife YouTube Channel
+Freelancer: [Your Name]  |  Client: FitLife Media
+
+Deliverables:
+- Edit 8 workout videos per month (raw footage provided by client)
+- Each video: colour grading, audio cleanup, intro/outro added, captions added
+- Maximum video length: 20 minutes per video
+- Thumbnail creation: 8 thumbnails per month (matching the 8 videos)
+- Delivery format: MP4 (1080p), plus YouTube-ready export settings
+
+Revisions: 1 round of revisions per video. Revisions must be submitted within 3 days
+of delivery. Late revision requests are out of scope.
+
+Excluded:
+- Motion graphics or custom animations
+- Script writing or voiceover
+- Videos longer than 20 minutes
+- Additional thumbnails beyond the 8 included
+- YouTube channel management or scheduling
+- Music licensing (client provides licensed music or royalty-free tracks)
+
+Timeline: Edited videos delivered within 5 business days of receiving raw footage.
+Payment: $800/month, invoiced on the 1st, net 14 days.
+Client responsibilities: Deliver raw footage in Google Drive by the 25th of each month.

@@ -1,0 +1,22 @@
+User Authentication System — Statement of Work
+
+Project: Build a login system for the client's existing web application.
+Deliverables:
+- User registration page
+- Login page
+- Password reset flow
+- Session management
+
+Revisions: Up to 2 rounds of revisions are included. A revision round is defined as
+one consolidated batch of changes submitted by the client via email.
+
+Excluded: The following are NOT included in this agreement:
+- Social login (Google, Facebook, Apple)
+- Two-factor authentication (2FA)
+- Admin dashboard or user management panel
+- Any mobile app changes
+
+Timeline: Delivery by November 30, 2026.
+Payment: 50% upfront ($500), 50% on delivery ($500). Total: $1,000.
+Hourly rate for extras: $50/hour.
+Client responsibilities: Provide access to the codebase within 3 business days of signing.
