@@ -83,10 +83,19 @@ with st.sidebar:
     st.title("⚙️ Project Setup")
 
     project_name = st.text_input("Project name", value="my-project", key="project_name_input")
-    sow_text     = st.text_area(
-        "Paste SOW text here",
+    uploaded_sow = st.file_uploader("Upload SOW (.txt)", type=["txt"], key="sow_file_uploader")
+    default_text = ""
+    if uploaded_sow is not None:
+        try:
+            default_text = uploaded_sow.read().decode("utf-8")
+        except Exception:
+            default_text = uploaded_sow.read().decode("latin-1")
+
+    sow_text = st.text_area(
+        "Or paste SOW text here",
+        value=default_text,
         height=250,
-        placeholder="Paste your Statement of Work...",
+        placeholder="Paste your Statement of Work or upload a .txt file above...",
         key="sow_text_input",
     )
 
@@ -356,6 +365,21 @@ with tab2:
                                     f"Revision counted. Used: "
                                     f"{proj['quota']['revisions_used']}"
                                 )
+                    with btn_cols[2]:
+                        override = st.selectbox(
+                            "Override verdict",
+                            ["(Keep verdict)", "in_scope", "out_of_scope", "gray_area"],
+                            key=f"override_select_{i}",
+                        )
+                        if override != "(Keep verdict)" and override != d.final_verdict:
+                            d.final_verdict = override
+                            if d.final_verdict == "out_of_scope" and d.hours == 0:
+                                d.hours = estimate_hours("revision", "M")
+                                d.price = price(d.hours, hourly_rate)
+                            elif d.final_verdict != "out_of_scope":
+                                d.hours = 0.0
+                                d.price = 0.0
+                            st.rerun()
 
             # Draft reply
             st.divider()
