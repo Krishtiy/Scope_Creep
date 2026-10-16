@@ -1,0 +1,13 @@
+I have provided the implementation plan in project root,  go through it read it carefully then , i need you to initialise a repo and set up  a  venv, i have downloded ollama and have gemma for it , i have blackboard , you also need to installl and initialise Entire . ignore the schedule dates mentioned in the readme and execute the entire implementation plan in phases as you see fit,while executing the plan do not make any assumptions if you have any  questions regarding anything  , first ask me give me the options and highlight the ones which is recommended, also regression tests, and other tests you see fit  to check all the changes .
+
+---
+
+continue
+
+---
+
+Ihave you setup entire for our project.if not how to proceed and can you explain as well what the entire will do ?
+
+---
+
+is the code writing complete and the project is finihsed?
