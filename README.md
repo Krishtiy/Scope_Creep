@@ -8,27 +8,64 @@
 
 ## 🌟 What It Does
 
-Freelancers lose thousands of dollars each year to "scope creep" the slow accumulation of unbilled tweaks, vague client demands, and open-ended revision cycles. 
+Freelancers and agency owners lose thousands of dollars each year to **"scope creep"**—the slow, sneaky accumulation of unbilled tweaks, vague client demands, and endless revision rounds that turn a profitable gig into unpaid overtime.
 
-**Scope-Creep Catcher** is a private, local-first assistant that turns contracts into deterministic guardrails:
+To solve this, **Scope-Creep Catcher** is built around **4 Core Features** that protect you across the three phases of any client contract:
 
-1. **Two-Tier SOW Stress Test (Before You Sign):**
-   - **⚠️ Missing Standard Clauses (`M1..Mn`):** Deterministically scans for absent contract protections such as missing revision caps, undefined deadlines, unlisted deliverables, or omitted client responsibilities.
-   - **🔍 Vague & Ambiguous Phrasing (`A1..An`):** Uses an expanded contract lexicon and open-weight LLM judgment to flag dangerous subjective terms (e.g., *"minor adjustments as needed"*, *"until you are happy"*, *"ongoing support"*), quoting the exact text and providing bulletproof rewrites.
+```
+                  ┌────────────────────────────────────────────────────────┐
+                  │          THE FREELANCE PROJECT LIFECYCLE               │
+                  └──────────────────────────┬─────────────────────────────┘
+                                             │
+      ┌──────────────────────────────────────┼──────────────────────────────────────┐
+      ▼                                      ▼                                      ▼
+[ BEFORE YOU SIGN ]                 [ DURING THE PROJECT ]                 [ CLOSING THE DEAL ]
+Feature 1: SOW Stress Test          Feature 2: Request Checker             Feature 3: Change Orders
+• Scans contract traps              • Splits compound emails               • Auto-calculates hours & fees
+• Detects missing clauses (M1..Mn)  • 0% false accusations                 • Friendly or formal pushback
+• Instant bulletproof rewrites      • Traffic-light verdicts               • Ready-to-sign Markdown agreements
+      │                                      │                                      │
+      └──────────────────────────────────────┼──────────────────────────────────────┘
+                                             ▼
+                               [ THROUGHOUT THE PROJECT ]
+                               Feature 4: Live Quota Tracker & Audit Log
+                               • Tracks revision rounds used (e.g., 1 of 2 used)
+                               • Local JSON audit ledger of every approved change
+```
 
-2. **Client Request Checker & Rule Engine (During the Project):**
-   - Splits compound client emails/messages into atomic, single action requests.
-   - Matches each request against agreed SOW deliverables, pages, and explicit exclusions.
-   - Enforces deterministic, legal rules in Python code to prevent AI hallucinations, override open-ended wording, and guarantee a **0% false accusation rate**.
+### The 4 Core Features at a Glance
 
-3. **Priced Reply & Change-Order Generator (Closing the Deal):**
-   - Drafts polite, professional client responses in your chosen tone (**Friendly** or **Formal**).
-   - Automatically builds a formal, code-calculated **Change Order** itemizing extra hours, hourly pricing, and sign-off instructions (`Reply "APPROVED" to proceed`).
-   - Downloads ready-to-sign Markdown change orders (`change_order.md`).
+| # | Feature Name | Project Phase | What It Does for You | Real-World Example |
+|:---:|---|---|---|---|
+| **1** | **Two-Tier SOW Stress Test** | **Before You Sign** | Scans your draft contract before you send it to the client. Detects **missing standard clauses** (`M1..Mn`) and highlights **dangerous ambiguous phrasing** (`A1..An`) with one-click bulletproof rewrites. | Catches vague traps like *"minor adjustments as needed"* and rewrites them into *"up to 2 rounds of design revisions, capped at 4 hours total"*. |
+| **2** | **Client Request Checker** | **During the Project** | Takes messy client messages, splits them into atomic requests, matches each against your signed contract, and issues a reliable **traffic-light verdict** (🟢 Included, 🔴 Billable Extra, 🟡 Clarification Needed) with 0% false accusations. | When a client asks to *"fix the mobile menu and also add a blog section"*, it separates them: menu fix is 🟢 Included, blog is 🔴 Billable Extra. |
+| **3** | **Priced Reply & Change-Order Generator** | **Closing the Deal** | Automatically estimates extra hours and fees from your hourly rate, drafting polite pushback emails (Friendly or Formal) and itemized, ready-to-sign Markdown Change Orders. | Generates: *"I'd love to build the blog! That falls outside our original 5-page scope. Here is Change Order #1 for 6 hours ($450). Reply 'APPROVED' to proceed."* |
+| **4** | **Live Quota Tracker & Audit Log** | **Throughout the Project** | Tracks how many agreed revision rounds have been consumed (e.g. `1 / 2 rounds used`) and maintains a permanent, local chronological audit trail of all approved requests. | When a client asks for a 3rd round of changes, the system flags that their 2-round quota has been exhausted and converts it to a billable change order. |
 
-4. **Live Quota Tracker & Project Audit Log:**
-   - Tracks revision round consumption live (e.g. `1 / 2 rounds used`).
-   - Records all approved, pending, and declined requests in a persistent audit trail.
+---
+
+### Detailed Breakdown of the 4 Features
+
+#### 1. 🔍 Two-Tier SOW Stress Test (Before You Sign)
+- **⚠️ Missing Standard Clauses (`M1..Mn`):** Automatically detects protective clauses you forgot to add—such as missing revision caps, undefined deadlines, unlisted deliverables, or omitted client responsibilities.
+- **🔍 Vague & Ambiguous Phrasing (`A1..An`):** Flags dangerous open-ended contract phrases (e.g., *"minor adjustments as needed"*, *"until you are happy"*, *"ongoing support"*), quotes the exact text, explains why it's a trap, and gives you a copyable replacement rewrite.
+
+#### 2. 🚦 Client Request Checker & Rule Engine (During the Project)
+- **Message Splitting:** Splits long, compound client emails into separate, single-action requests.
+- **Contract Matching:** Matches each request against agreed pages, features, and explicit exclusions.
+- **Traffic-Light Verdicts:**
+  - 🟢 **INCLUDED IN CONTRACT**: Covered under existing scope; no extra charge.
+  - 🔴 **EXTRA WORK (BILLABLE)**: Outside agreed scope; requires an extra charge order.
+  - 🟡 **UNCLEAR / NEEDS CLARIFICATION**: Open to dispute; prompts a clarifying question before starting.
+
+#### 3. 📄 Priced Reply & Change-Order Generator (Closing the Deal)
+- **Tone Switcher:** Drafts client responses in your preferred voice (**Friendly** or **Formal**).
+- **Formal Change Order:** Code-generates an itemized Change Order with hours, hourly rate, total fee, and sign-off instructions (`Reply "APPROVED" to proceed`).
+- **Downloadable Markdown:** Saves ready-to-sign agreements directly to `change_order.md`.
+
+#### 4. 📊 Live Quota Tracker & Project Audit Log
+- **Quota Consumption:** Automatically decrements your available revision budget when revision requests are accepted.
+- **Persistent Audit Trail:** Maintains a permanent chronological ledger of every client request, verdict, and timestamp in local project files (`data/projects/{name}.json`).
 
 ---
 
@@ -40,7 +77,7 @@ Freelancers lose thousands of dollars each year to "scope creep" the slow accumu
 - **Git**
 
 ### 2. Pull Local Open-Weight Model
-Scope-Creep Catcher is optimized for fast, accurate local CPU execution using **Qwen 2.5 (3B)** :
+Scope-Creep Catcher is optimized for fast, accurate local CPU execution using **Qwen 2.5 (3B)**:
 ```bash
 ollama pull qwen2.5:3b
 ```
@@ -73,101 +110,140 @@ Open your browser at `http://localhost:8501`.
 
 ## 🧠 Architectural Principle: "LLM Reads, Code Decides"
 
-Large Language Models alone cannot be trusted with legal boundaries or billing math they hallucinate clauses, waffle on boundaries, and drift on numbers. Scope-Creep Catcher uses a strict hybrid design where **the LLM is only a semantic parser, and deterministic Python code makes all legal verdicts and calculations**.
+### Why Do We Need This Principle? (In Plain English)
+Imagine hiring an AI to help you manage your freelance clients. If you let a standard AI model (like ChatGPT, Llama, or Claude) read your contract and decide on its own whether work is free or billable, **it will fail in three dangerous ways**:
+1. **The AI hallucinates contract terms:** It invents clauses that were never in your agreement to be helpful.
+2. **The AI is bad at arithmetic:** It hallucinates numbers and math ($150/hr × 3 hrs = $600?).
+3. **The AI is overly polite (Sycophancy):** If a client writes a sweet, polite email (*"Could you please do this tiny little favor for me?"*), the AI feels bad and says *"Sure, that's included!"* even if the request requires 20 hours of unbilled labor.
 
-```
-[ SOW Text + Rate ] ──> S1: Fact Extraction (LLM + Regex Fallback) ──> SOWFacts (Typed JSON)
-                             │
-                             ├──> S2: Stress Test (Missing Detectors + Lexicon + LLM)
-                             │       ├──> ⚠️ Missing Critical Clauses (M1..Mn)
-                             │       └──> 🔍 In-Text Vague Phrasing (A1..An)
-                             │
-[ Client Message ]  ──> S3: Atomic Request Splitter (LLM)
-                             │
-                             ├──> S4: SOW Semantic Matcher (LLM + Niche Skills)
-                             │       │
-                             │       ▼
-                             └──> S5: Deterministic Rule Engine & Quote Verifier (Code)
-                                     │   ├── R0: Quote Verification Guard
-                                     │   ├── R1: Explicit Contract Exclusions
-                                     │   ├── R2: Unlisted Pages/Screens
-                                     │   ├── R3: Revision Quota Limits
-                                     │   ├── R4: Vague Revision Dispute Overrides
-                                     │   ├── R5: Unlisted Deliverables/Features
-                                     │   └── R6: Timeline/Schedule Changes
-                                     │
-                                     ├──> S6: Pricing Engine (Hours x Hourly Rate) (Code)
-                                     │
-                                     ├──> S7: Reply & Change Order Drafter (LLM + Number Guard)
-                                     │
-                                     └──> S8: Persistent State & Quota Dashboard (Code)
-```
+In freelance client management, **a false accusation is fatal**. If you wrongly accuse a good client of scope creep on work they already paid for, you destroy trust and damage your business reputation.
 
-### 📋 Step-by-Step Decision-Making Pipeline (`S1` → `S8`)
+### The Courtroom Analogy: The Paralegal vs. The Judge
+To solve this, we designed the system around a strict separation of powers:
 
-1. **`S1: Structured SOW Fact Extraction` (`engine/sow.py`)**
-   - **Input:** Raw Statement of Work text and rate.
-   - **Logic:** The LLM extracts 12 structured fields into a strictly validated Pydantic schema (`SOWFacts`: pages, revision rounds, deliverables, exclusions, deadline, payment terms, client responsibilities).
-   - **Fallback & Verification:** If the model omits standard fields, deterministic regex extractors fill the blanks without overwriting valid data. Every cited quote (`pages_quote`, `revision_quote`, `excluded_quote`) is strictly verified against source text using Unicode NFKC normalization and RapidFuzz alignment. Unverifiable citations are automatically nulled out to prevent hallucinated contractual clauses.
+$$\text{\bf "The LLM is the Paralegal. Deterministic Python Code is the Judge and Accountant."}$$
 
-2. **`S2: SOW Stress Test & Ambiguity Scoring` (`engine/stress_test.py`)**
-   - **Input:** Extracted facts and raw contract text.
-   - **Logic:** Merges three distinct detection layers:
-     - **Deterministic Lexicon Scan:** Regex rules based on `config/lexicon.yaml` flag dangerous phrases (*"as needed"*, *"until satisfied"*, *"minor tweaks"*).
-     - **LLM Ambiguity Judgment:** Evaluates contextual risk and generates concrete Freelancer vs. Client readings with copyable contract rewrites.
-     - **Static Missing Clause Detectors:** Deterministically flags absent caps (`M1..Mn`), undefined revision limits, and missing client responsibilities.
-   - **Output:** Up to 5 prioritized risk cards assigned persistent IDs (`A1..A5`) that cross-link into request checking rules.
+| Role | Who Does It? | What They Do |
+|---|---|---|
+| **The Paralegal (The Reader)** | **The Local LLM (`qwen2.5:3b`)** | Reads messy, conversational human English (in contracts and long client emails) and translates it into clean, structured data. |
+| **The Judge & Accountant (The Decider)** | **Deterministic Python Code (`engine/`)** | Verifies that quotes actually exist verbatim in the contract, enforces strict legal contract rules, computes billing math ($h \times \text{rate}$), and issues the binding verdict. |
 
-3. **`S3: Atomic Request Splitter` (`engine/checker.py`)**
-   - **Input:** Raw client message or email.
-   - **Logic:** Client messages often compound multiple tasks into one sentence (e.g., *"Can you fix the login button, add a blog page, and deliver by Friday?"*). The LLM parses the message into atomic, single-action `SplitRequest` objects tagged by request type (`new_page`, `revision`, `new_feature`, `timeline_change`) and magnitude (`tweak`, `substantial`, `unclear`).
-
-4. **`S4: Semantic Scope Matcher` (`engine/checker.py`)**
-   - **Input:** Individual atomic request + SOW facts + domain skills profile.
-   - **Logic:** Matches the request against agreed deliverables and injects domain-specific guidance ([skills/web_dev.md](skills/web_dev.md), [skills/copywriting.md](skills/copywriting.md)) to prevent common false positives (e.g. recognizing that fixing a broken responsive navbar is an included bugfix, not a new page).
-   - **Output:** Model proposes an initial verdict (`in_scope`, `out_of_scope`, or `gray_area`) with supporting quotes and confidence scores.
-
-5. **`S5: Deterministic Rule Engine & Quote Verifier` (`engine/rules.py` & `engine/verifier.py`)**
-   - **Input:** LLM proposal + active project quota + stress test issues + verbatim texts.
-   - **Logic:** Rules `R0` through `R8` execute in pure Python code. The model's proposed verdict is deterministically overridden if contract boundaries are breached:
-     - Quotes are verified verbatim; unverifiable citations immediately trigger rule `R0` (`unverified`).
-     - Requests matching explicit exclusions trigger `R1` (`out_of_scope`).
-     - Requests for unlisted pages or deliverables trigger `R2`/`R5` (`out_of_scope`).
-     - Revision quota counters trigger `R3` (`out_of_scope` if exceeded; `gray_area` if undefined).
-     - Subjective redesign requests under vague clauses trigger `R4` (`gray_area` cross-linked to Stress Test card).
-
-6. **`S6: Deterministic Pricing Engine` (`engine/pricing.py`)**
-   - **Input:** Request type, size (`S`, `M`, `L`), and project hourly rate.
-   - **Logic:** Pure Python lookup and arithmetic (`hours * hourly_rate`). Hours are bounded deterministically based on standard complexity tiers (`config/hours.yaml`), eliminating LLM arithmetic errors and billing drift.
-
-7. **`S7: Reply Drafter & Change Order Generator` (`engine/drafter.py`)**
-   - **Input:** Code-enforced decision, pricing calculations, tone preference (Friendly vs. Formal).
-   - **Logic:** Generates polite, professional client communication:
-     - For `in_scope`: Drafts an acknowledgment confirming the task is covered.
-     - For `gray_area`: Generates polite clarifying questions before commencing work.
-     - For `out_of_scope`: Generates a polite explanation and builds a legally structured **Change Order** with a built-in **Number Guard** that verifies all quoted dollar figures and hours in the reply text strictly match the pricing engine calculations.
-
-8. **`S8: Persistent State & Quota Audit Trail` (`engine/state.py`)**
-   - **Input:** User approval, rejection, or edit actions.
-   - **Logic:** Persists project state locally to `data/projects/{project_id}.json`. Automatically increments consumed revision rounds when revisions are accepted, and maintains an exportable chronological audit log.
+> **Golden Rule:** The AI is never allowed to guess a price or issue the final verdict. **Code always has the final word.**
 
 ---
 
-## 🛡️ The 9 Deterministic Contract Rules (`engine/rules.py`)
+## ⚙️ How the Engine Works: The 8-Step Assembly Line (`S1` → `S8`)
 
-Every verdict is strictly governed by Python code rules (`R0` through `R8`). The AI model's opinion is overridden whenever a contract boundary is violated:
+### What is the "Engine"?
+When you run Scope-Creep Catcher, there are two main parts:
+1. **The Frontend (`app.py`):** The visual Streamlit dashboard you interact with in your browser.
+2. **The Backend Engine (`engine/`):** The Python processing machinery under the hood that parses contracts, checks quotes, enforces rules, and runs calculations.
 
-| Rule | Name | Condition & Ruling |
-| :--- | :--- | :--- |
-| **`R0`** | **Quote Verification Guard** | If the model cites text not found verbatim in the contract or message, force `unverified` to stop hallucination. |
-| **`R1`** | **Explicit Exclusion** | If the request matches an item in the SOW's `Excluded` list, force **`out_of_scope`**. |
-| **`R2`** | **Unlisted Page** | If the client asks for a page/screen not in the agreed page list, force **`out_of_scope`**. |
-| **`R3`** | **Revision Quota Enforcement** | If the revision limit is exceeded, force **`out_of_scope`**. If revision rounds are null, mark **`gray_area`**. |
-| **`R4`** | **Vague Revision Dispute Guard** | If a client asks for a redesign under vague terms (e.g. *"minor adjustments until happy"*), force **`gray_area`** and link to Stress Test issue `M1`/`A1`. |
-| **`R5`** | **Unlisted Deliverable** | If the request asks for a standalone deliverable not in agreed scope, force **`out_of_scope`**. |
-| **`R6`** | **Timeline Change** | Schedule or deadline adjustments require mutual agreement; force **`gray_area`**. |
-| **`R7`** | **Low Confidence Fallback** | If the contract is silent and confidence is low, safely default to **`gray_area`** instead of accusing the client. |
-| **`R8`** | **Code Always Wins** | Deterministic Python rules strictly override the LLM's proposed verdict. |
+### What Does `S1` to `S8` Mean?
+Think of the Engine as an **automated 8-step assembly line** (just like a car factory with Station 1 through Station 8). Every contract and client message passes through these sequential steps:
+
+```
+[ SOW Contract Text ] ──> S1: Fact Extraction (AI reads text into structured schema)
+                               │
+                               ├──> S2: Stress Test (Lexicon scan + missing clause check)
+                               │
+[ Client Email/Message ] ──> S3: Message Splitter (AI breaks email into single requests)
+                               │
+                               ├──> S4: Scope Matcher (AI suggests a tentative opinion)
+                               │       │
+                               │       ▼
+                               └──> S5: Code Rule Engine (Python inspects AI & overrides errors)
+                                       │   (Rules R0-R8 enforce contract boundaries in pure code)
+                                       │
+                                       ├──> S6: Pricing Engine (Python computes: Hours × Rate)
+                                       │
+                                       ├──> S7: Response Drafter (AI writes email + Code Number Guard)
+                                       │
+                                       └──> S8: Project Ledger (Python saves audit state to disk)
+```
+
+### The 8 Steps Explained Step-by-Step
+
+#### `Step 1 (S1): Structured SOW Fact Extraction` (`engine/sow.py`)
+- **What happens:** When you upload or paste a contract (Statement of Work), the AI reads the messy text and extracts 12 essential contract facts into a structured, validated Pydantic schema (`SOWFacts`: agreed pages, revision round limits, deliverables, explicit exclusions, deadlines, payment terms, client responsibilities).
+- **Safety Guard:** If the small local model leaves a standard field blank, deterministic Python regex fallbacks automatically find and fill it. Every extracted quote is verified verbatim against the raw text using Unicode NFKC normalization and RapidFuzz string alignment. Unverifiable citations are nulled out to prevent hallucinated clauses.
+
+#### `Step 2 (S2): Pre-Flight Contract Stress Test` (`engine/stress_test.py`)
+- **What happens:** Before you sign the contract, this step stress-tests it for traps using a 3-layer merged scan:
+  - *Layer 1 (Code):* Scans `config/lexicon.yaml` for dangerous open-ended words (*"as needed"*, *"until satisfied"*).
+  - *Layer 2 (AI):* Evaluates realistic dispute risks, writing concrete Freelancer vs. Client interpretations with copyable contract rewrites.
+  - *Layer 3 (Code):* Detects missing protective clauses (`M1..Mn`) like missing revision caps or undefined delivery dates.
+- **Output:** Up to 5 prioritized risk cards assigned persistent IDs (`A1..A5`) that cross-link directly into mid-project request checking.
+
+#### `Step 3 (S3): Atomic Request Splitter` (`engine/checker.py`)
+- **What happens:** Clients rarely send single, clean requests—they send messy compound emails (e.g., *"Can you fix the header button, build a new blog page, and deliver by Friday?"*).
+- **Action:** The AI breaks compound messages apart into distinct, single-action `SplitRequest` items, tagging each with its request type (`new_page`, `revision`, `new_feature`, `timeline_change`) and magnitude (`tweak`, `substantial`, `unclear`).
+
+#### `Step 4 (S4): Semantic Scope Matcher` (`engine/checker.py`)
+- **What happens:** Compares each atomic request against the agreed deliverables from Step 1.
+- **Domain Intelligence:** Injects specialized industry profiles ([skills/web_dev.md](skills/web_dev.md), [skills/copywriting.md](skills/copywriting.md)) so the AI understands standard industry practices (e.g., recognizing that fixing responsive mobile CSS is an included bugfix, but adding an e-commerce shopping cart is a billable new feature).
+- **Output:** The AI provides an initial *tentative opinion* (`in_scope`, `out_of_scope`, or `gray_area`). **However, this is NOT the final verdict!**
+
+#### `Step 5 (S5): The Deterministic Rule Engine & Quote Verifier` (`engine/rules.py` & `engine/verifier.py`)
+- **What happens:** **This is where Python code takes over from the AI.** Python rules `R0` through `R8` inspect the AI's tentative opinion against hard contract boundaries.
+- **The Override:** If the AI was tricked by polite client phrasing, Python code overrides the AI and forces the legally correct verdict (detailed below).
+
+#### `Step 6 (S6): Deterministic Pricing Engine` (`engine/pricing.py`)
+- **What happens:** Pure Python math calculates extra billable hours and fees (`hours * hourly_rate`). Hours are looked up deterministically from standard complexity tiers (`config/hours.yaml`), eliminating AI arithmetic hallucinations and random pricing drift.
+
+#### `Step 7 (S7): Client Response Writer & Change Order Drafter` (`engine/drafter.py`)
+- **What happens:** Generates professional client communication:
+  - For `in_scope`: Drafts a friendly confirmation that the work is covered.
+  - For `gray_area`: Drafts polite clarifying questions before starting work.
+  - For `out_of_scope`: Explains the scope boundary politely and attaches an itemized **Change Order** with sign-off instructions.
+- **Number Guard:** A Python regex guard double-checks that the hours and dollar amounts in the generated email text *exactly match* the numbers computed by the pricing engine in Step 6.
+
+#### `Step 8 (S8): Project Ledger & Quota Tracker` (`engine/state.py`)
+- **What happens:** Automatically updates project records in `data/projects/{project_id}.json`. When revision requests are approved, it decrements the client's revision quota (e.g. `1 / 2 rounds consumed`), and updates the persistent audit trail.
+
+---
+
+## 🛡️ Step 5 Deep Dive: Where Contract Rules Live & How They Override the AI
+
+### Exactly Where Do These Rules Fit in the Pipeline?
+Notice the critical position of Step 5:
+```
+[ Step 4: AI Tentative Suggestion ]
+                 │
+                 ▼
+[ STEP 5: PYTHON RULE ENGINE (engine/rules.py) ]  <─── HERE IS WHERE CODE OVERRIDES AI
+                 │
+                 ▼
+[ Step 6: Pricing Engine & Change Order ]
+```
+In Step 4, the AI generates a guess. But because LLMs can be tricked by polite wording or suffer from contract amnesia, **Step 5 sits between the AI and the client output as a hard firewall**.
+
+### How Code Overrides the AI (Real-World Before & After Examples)
+
+To understand where and why rules make changes, consider these actual examples from our evaluation benchmark:
+
+| Real-World Scenario | What the AI Guessed in Step 4 | Which Rule Triggered in Step 5? | What Code Changed (The Final Verdict) | Why Code Overrode the AI |
+|---|:---:|:---:|:---:|---|
+| **Client asks for SEO meta tags, but SOW says: `"Excluded: Search engine optimization (SEO)"`** | 🟢 `in_scope`<br>*(AI thinks SEO is a common web task)* | **`R1: Explicit Exclusion`** | 🔴 **`out_of_scope`** | The contract explicitly excluded SEO. The AI was swayed by general web norms, but Python code saw the exact exclusion and forced an extra billable charge. |
+| **Client requests a 3rd round of layout revisions, but SOW allows `"Up to 2 revision rounds"`** | 🟢 `in_scope`<br>*(AI sees word "revision" and assumes free)* | **`R3: Revision Quota Enforcement`** | 🔴 **`out_of_scope`** | Python checked the project ledger (`data/projects/`) and saw `rounds_used (2) >= rounds_max (2)`. Free revisions were exhausted. |
+| **AI cites a contract sentence to justify extra work, but the quote does not exist in the contract** | 🔴 `out_of_scope`<br>*(AI hallucinates a clause)* | **`R0: Quote Verification Guard`** | 🟡 **`unverified`** | Python's RapidFuzz verifier proved the cited quote was an AI hallucination. Code nulls the citation so the freelancer never sends a fake claim to the client. |
+| **Client asks for a completely new `"Affiliate Dashboard"` not in the 4 agreed pages** | 🟡 `gray_area`<br>*(AI waffles because client asked nicely)* | **`R2: Unlisted Page`** | 🔴 **`out_of_scope`** | Python checked the approved page list `['Home', 'About', 'Pricing', 'Contact']`. The dashboard was not on the list. Code strictly labeled it billable extra work. |
+
+### The 9 Deterministic Rules in Strict Execution Priority (`R0` → `R8`)
+
+The rule engine in `engine/rules.py` evaluates these 9 checks in strict sequence:
+
+| Priority | Rule ID | Rule Name | Trigger Condition | Code Action & Verdict Override |
+|:---:|:--- |:--- |:--- |:--- |
+| **1** | **`R0`** | **Quote Verification Guard** | The AI quotes text that does not exist verbatim in the contract or email. | Immediately forces **`unverified`** to stop AI hallucinations from reaching the client. |
+| **2** | **`R1`** | **Explicit Exclusion** | The request matches an item listed in the SOW's `Excluded:` section. | Overrides the AI and strictly forces **`out_of_scope`**. |
+| **3** | **`R2`** | **Unlisted Page** | The client asks for a new screen/page not in the agreed SOW page list. | Overrides the AI and strictly forces **`out_of_scope`** (or `gray_area` if no page list was defined). |
+| **4** | **`R3`** | **Revision Quota Enforcement** | The client has already used up all agreed revision rounds (e.g. 2 of 2 used). | Overrides the AI and strictly forces **`out_of_scope`**. If revision rounds were left undefined in SOW, forces **`gray_area`**. |
+| **5** | **`R4`** | **Vague Revision Dispute Guard** | Client asks for a major redesign under subjective wording (*"tweak until happy"*). | Overrides the AI and forces **`gray_area`**, cross-linking to the exact warning card `A1` from Step 2. |
+| **6** | **`R5`** | **Unlisted Deliverable** | Client asks for a major standalone feature not mentioned in deliverables. | Overrides the AI and strictly forces **`out_of_scope`**. |
+| **7** | **`R6`** | **Timeline Change** | Client requests a deadline change or delivery acceleration. | Deadlines require mutual agreement; forces **`gray_area`**. |
+| **8** | **`R7`** | **Low Confidence Fallback** | The AI reports low confidence and no hard rule applies. | Safely defaults to **`gray_area`** instead of falsely accusing the client. |
+| **9** | **`R8`** | **Code Always Wins** | Any discrepancy between Python rules and the AI's proposal. | Python code verdict takes absolute precedence over the model's opinion. |
 
 ---
 
@@ -175,7 +251,7 @@ Every verdict is strictly governed by Python code rules (`R0` through `R8`). The
 
 ### 1. Sidebar Project Configuration
 - **Project Name & Local Storage**: Automatically saves session state to `data/projects/{name}.json`.
-- **Hourly Rate & Currency**: Supports USD, EUR, GBP, INR, and AUD.
+- **Hourly Rate & Currency**: Supports USD ($), EUR (€), GBP (£), INR (₹), and AUD (A$).
 - **Contract Price & Niche Selector**: Injects domain-specific guidance (`web_dev`, `copywriting`, or general).
 
 ### 2. Tab 1: SOW Stress Test
@@ -195,6 +271,66 @@ Every verdict is strictly governed by Python code rules (`R0` through `R8`). The
 ### 4. Tab 3: Project Log & Audit Trail
 - Logs every approved, pending, and declined request.
 - One-click export of project logs to Markdown (`{project}_log.md`).
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technology | Purpose & Implementation |
+| :--- | :--- | :--- |
+| **Core Language** | **Python 3.10+** (Tested on Python 3.13) | Backend architecture, rule engine, pricing math, and file persistence. |
+| **User Interface** | **Streamlit** (`streamlit>=1.38`) | Clean, responsive, wide-layout web dashboard with 3 dedicated workflow tabs. |
+| **Local AI Engine** | **Ollama** (`ollama>=0.3.3`) | Local open-weight LLM execution (`qwen2.5:3b`, `gemma2:2b`) running 100% offline. |
+| **Schema Validation**| **Pydantic v2** (`pydantic>=2.8`) | Strict JSON-schema constrained decoding for structured model responses. |
+| **Text Matching** | **RapidFuzz** (`rapidfuzz>=3.9`) | 3-tier verbatim quote verification and fuzzy token alignment with number token guards. |
+| **Configuration** | **PyYAML** (`pyyaml>=6.0`) | Domain complexity hours (`config/hours.yaml`) and risk lexicons (`config/lexicon.yaml`). |
+| **Cloud Eval Harness**| **Backboard SDK** (`backboard-sdk>=1.5`) | Async cloud benchmark harness evaluating 70B models strictly on synthetic data. |
+| **Observability** | **Entire CLI** (`entire.io`) | Local agent observability capturing prompts, tool calls, and git checkpoints. |
+| **Testing** | **Pytest & Pytest-Cov** | Deterministic test suite with 100 passing unit tests. |
+
+---
+
+## 📁 Repository Directory & File Structure
+
+```text
+scope-creep-catcher/
+├── app.py                      # Main Streamlit web application (UI & Tab Routing)
+├── engine/                     # Core backend engine ("LLM Reads, Code Decides")
+│   ├── config.py               # Model settings, context sizes, and directory paths
+│   ├── sow.py                  # Step 1 (S1): SOW extraction & regex fallback
+│   ├── stress_test.py          # Step 2 (S2): SOW ambiguity & missing clause scan
+│   ├── checker.py              # Step 3 & 4 (S3-S4): Atomic request splitter & matcher
+│   ├── rules.py                # Step 5 (S5): 9 Deterministic contract rules (R0-R8)
+│   ├── verifier.py             # 3-Tier quote verifier & number token mismatch guard
+│   ├── pricing.py              # Step 6 (S6): Hours estimation & price calculation
+│   ├── drafter.py              # Step 7 (S7): Email drafter & change-order generator
+│   ├── state.py                # Step 8 (S8): Project persistence & quota audit tracker
+│   ├── schemas.py              # Pydantic v2 schemas passed to Ollama format
+│   ├── lexicon.py              # Loads and scans subjective contract phrasing
+│   └── llm.py                  # Single robust wrapper around Ollama chat API
+├── eval/                       # Model selection evaluation lab & benchmark harness
+│   ├── run_eval.py             # Evaluates local Ollama models (Baseline vs. Pipeline)
+│   ├── run_backboard.py        # Evaluates cloud benchmark via Backboard.io (synthetic only)
+│   ├── metrics.py              # Strict grading: Accuracy, False Accusation Rate (FAR), Confusion Matrix
+│   └── make_report.py          # Automatically compiles results into RESULTS.md
+├── data/
+│   ├── gold/                   # 23 Synthetic gold benchmark test cases and SOWs
+│   │   ├── cases.json          # Ground-truth labeled requests across dev/test splits
+│   │   └── sows/               # Synthetic Statements of Work (bakery, auth, CRM, etc.)
+│   └── projects/               # Local JSON project files storing state & quota history
+├── config/
+│   ├── hours.yaml              # Complexity hour lookup tables (S, M, L)
+│   └── lexicon.yaml            # Lexicon of dangerous, ambiguous contract terms
+├── skills/                     # Domain knowledge profiles injected during matching
+│   ├── web_dev.md              # Web development scope boundaries and standards
+│   └── copywriting.md          # Copywriting revision boundaries and norms
+├── tests/                      # 100 Deterministic offline unit tests (100% passing)
+├── results/
+│   ├── RESULTS.md              # Official benchmark report card & confusion matrices
+│   └── raw/                    # Raw JSON execution logs from all model evaluations
+├── requirements.txt            # Python dependencies
+└── README.md                   # Comprehensive project documentation
+```
 
 ---
 
