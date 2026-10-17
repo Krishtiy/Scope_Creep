@@ -212,14 +212,14 @@ Scope-Creep Catcher was designed for the **Hacktoberfest Open-Source AI Challeng
 
 ### 🛡️ Why Backboard Cloud Eval Does Not Compromise Local Privacy
 
-A core challenge of building an offline, privacy-first side-hustle tool is incorporating cloud partner technologies without leaking confidential client contracts:
+The core challenge of building this offline, privacy-first side-hustle tool was incorporating cloud partner technologies without leaking confidential client contracts:
 
 ```
 ┌────────────────────────────────────────────────────────┐
 │ 1. PRODUCTION RUNTIME (Freelancers / Streamlit App)    │
 │    • Real Client Contracts & Messages                  │
 │    • 100% Local, Offline & Private                     │
-│    • Ollama (Open-Weight: Qwen 2.5 / Gemma 2)          │
+│    • Ollama (Open-Weight: Qwen 2.5)          │
 │    • NO Cloud APIs, NO Data Leaks                      │
 └────────────────────────────────────────────────────────┘
 
