@@ -1,0 +1,28 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M54E7QDPQGPAXEF7132ZR7CE",
+  "session_id": "a02ab208-331f-49e3-b304-516c8382ad39",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-17T08:04:19.0743234Z",
+  "branch": "master",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".gitignore",
+    "README.md",
+    "config/lexicon.yaml",
+    "docs/THEORY.md",
+    "engine/config.py",
+    "engine/llm.py",
+    "engine/sow.py",
+    "engine/state.py",
+    "engine/stress_test.py",
+    "prompts/extract_sow.txt",
+    "prompts/stress_test.txt",
+    "tests/test_state.py",
+    "tests/test_stress_test.py"
+  ],
+  "agent": "Antigravity",
+  "model": "",
+  "turn_id": "ae91262eadc5"
+}
