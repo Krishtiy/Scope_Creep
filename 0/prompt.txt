@@ -1,0 +1,608 @@
+go through the project , i was trying to test the project with an exmaple sow , but see teh sow it mentioned the pages and no of revisions etc , but the extracted facts shows null values 
+determine the issue that might have caused this and also list the exact logic that is responsible for showing this output , also check if ollama is correctly integrated and running , and help me fix this issue and extraction logic . 
+this is the complete sow that i have pasted,  : Bakery Website Project
+Statement of Work
+
+Project: Website for Sweet Crumbs Bakery
+Freelancer: Alex Morgan  |  Client: Sweet Crumbs Bakery
+Fee: $1,500 fixed price ($50/hr baseline rate)
+
+Pages Included:
+The website will include the following 4 pages: Home, Menu, About Us, Contact.
+
+Revisions:
+The project includes up to 2 rounds of minor revisions to the 4 pages before launch.
+
+Excluded:
+The following are NOT included in this agreement:
+- Online ordering, checkout, and e-commerce payment gateways
+- Content writing and blog creation
+- Ongoing website hosting and maintenance
+- Social media management
+
+---
+
+These are the current facts being extracted, I want to know if this sow, does not have any deliverables, if it has why is our system not extracting those, provide me more example sows(different kinds and formats) to test on, also tell me if the current gemma model is not strong and we should shift some other model, only tell dont make any changes to the code - Bakery Website Project
+Statement of Work
+
+Project: Website for Sweet Crumbs Bakery
+Freelancer: Alex Morgan  |  Client: Sweet Crumbs Bakery
+Fee: $1,500 fixed price ($50/hr baseline rate)
+
+Pages Included:
+The website will include the following 4 pages: Home, Menu, About Us, Contact.
+
+Revisions:
+The project includes up to 2 rounds of minor revisions to the 4 pages before launch.
+
+Excluded:
+The following are NOT included in this agreement:
+- Online ordering, checkout, and e-commerce payment gateways
+- Content writing and blog creation
+- Ongoing website hosting and maintenance
+- Social media management
+
+---
+
+Change the model to qwen2.5:7b instead for now, once done provide me some sow examples which dont explicilty mention the fields so that I can directly test if the model is catching those things or not
+
+---
+
+I have been trying to do xtraction from the first sow provided but its showing this error, and the extraction keeps on loading, can you help pinpoint the issue for now dont change the code, also set up some logs in the terminal so its easier to pinpoint the error
+
+---
+
+Then change model to this for now qwen2.5:3b
+
+---
+
+Kill this terminal I will check on my own
+
+---
+
+This is the response that I am getting for the extraction fact logic for test1, the system is unable to detect  the dileverables what can we do to change and improve this and the llm is able to focus on the semantics in the sow so that it can correctly identify everything, you can look into the code for more context - 
+Hey! So here's what we agreed on for the project.
+
+I'll be building out your portfolio site — the main landing page, 
+a gallery page to show your work, an about section, and a contact 
+form page. That's the four of them.
+
+If you need any tweaks after I send the first version, you get one 
+shot at that — one round of changes and we're done. Anything after 
+that, we'd need to renegotiate.
+
+I won't be writing any of the copy for you, sourcing photos, or 
+setting up your domain/hosting. You handle all of that.
+
+Payment is half now, half when you sign off on the final.
+
+---
+
+Yes apply these changes
+
+---
+
+Now run tests for the following cases also, compare them for the actual vs expected result and suggest changes based on that if needed, only give the suggests for now, I will tell you to write code after that - 
+
+This agreement covers the design and development of a five-screen 
+mobile application including an onboarding flow, a home feed, a 
+user profile screen, a notifications screen, and a settings screen. 
+The consultant will make available for client review a maximum of 
+three iterative feedback cycles prior to handoff. Source files, 
+exported assets in PNG and SVG formats, and a style guide document 
+will be transferred to the client upon full payment. Backend API 
+development, server deployment, and App Store submission fees fall 
+outside the scope of this engagement. The client must supply all 
+brand assets no later than five business days after agreement 
+execution, failing which the timeline adjusts accordingly. Total 
+compensation is fixed at eight thousand dollars payable net-30 
+from the invoice date.
+
+Quick summary of what's covered:
+
+• Build the homepage, services page, testimonials page, 
+  and a blog listing page
+• Two feedback rounds max — first after the wireframes, 
+  second after the visual design
+• Hand over Figma source file and exported image assets on completion
+• Wrap everything up by end of Q1 (March 31)
+
+What's not part of this:
+• Writing the blog posts or managing content
+• SEO work beyond basic meta tags
+• Anything to do with the email newsletter system
+
+You're on the hook for providing the logo, brand colors, and 
+approved copy before the project kicks off.
+
+---
+
+Now run tests for the following cases also, compare them for the actual vs expected result and suggest changes based on that if needed, only give the suggests for now, I will tell you to write code after that - 
+
+Test b : This agreement covers the design and development of a five-screen 
+mobile application including an onboarding flow, a home feed, a 
+user profile screen, a notifications screen, and a settings screen. 
+The consultant will make available for client review a maximum of 
+three iterative feedback cycles prior to handoff. Source files, 
+exported assets in PNG and SVG formats, and a style guide document 
+will be transferred to the client upon full payment. Backend API 
+development, server deployment, and App Store submission fees fall 
+outside the scope of this engagement. The client must supply all 
+brand assets no later than five business days after agreement 
+execution, failing which the timeline adjusts accordingly. Total 
+compensation is fixed at eight thousand dollars payable net-30 
+from the invoice date.
+
+Test c : Quick summary of what's covered:
+
+• Build the homepage, services page, testimonials page, 
+  and a blog listing page
+• Two feedback rounds max — first after the wireframes, 
+  second after the visual design
+• Hand over Figma source file and exported image assets on completion
+• Wrap everything up by end of Q1 (March 31)
+
+What's not part of this:
+• Writing the blog posts or managing content
+• SEO work beyond basic meta tags
+• Anything to do with the email newsletter system
+
+You're on the hook for providing the logo, brand colors, and 
+approved copy before the project kicks off.
+
+
+Test 4 : The scope of this contract is limited to a four-page brochure 
+website. Those pages are: who we are, what we do, our pricing, 
+and reach out. Minor visual changes are welcome — you have two 
+of those built in. Structural changes, new pages, or anything 
+touching the back end will be quoted separately.
+
+There's no deadline written in stone here; we'll work off the 
+milestone schedule we discussed verbally.
+
+Test 5 - 
+Logo & Brand Package for Thornwood Coffee
+
+We'll start with three initial concepts. You pick the direction 
+you like best, and from there I'll refine it. The refinement 
+phase allows for back-and-forth until we land on something you 
+love — within reason (let's say no more than four rounds there).
+
+The finished package includes: primary logo, a simplified icon 
+version, your brand color codes (hex + CMYK), and a one-page 
+usage guide.
+
+Printing, signage, packaging, or merchandise design is a separate 
+conversation. Social media templates are also not part of this.
+
+I'll need your existing brand materials and any competitor 
+references you want to share before we start.
+
+Fifty percent due to start, remainder on approval.
+
+---
+
+Why we got false psositive in test 5 in use page guide , becos in sow it is written that ,so why ?
+
+---
+
+Ok, then for now apply the fixes for 1 to 4 as you suggested and then carry out the tests once again
+
+---
+
+now run the test for stress test part/feature that is there for all the sow test cases i provided , and compare teh expected result with teh actual results and tell if there is anythig that is needed to improve or everything is running fine.
+
+---
+
+yes implement these and retest .
+
+---
+
+The test 1 was previously giving something else for stress test, it was talking about scope being unclear but when I ran it again now its telling both the things are missing clause is that intended behaviour ?
+Hey! So here's what we agreed on for the project.
+
+I'll be building out your portfolio site — the main landing page, 
+a gallery page to show your work, an about section, and a contact 
+form page. That's the four of them.
+
+If you need any tweaks after I send the first version, you get one 
+shot at that — one round of changes and we're done. Anything after 
+that, we'd need to renegotiate.
+
+I won't be writing any of the copy for you, sourcing photos, or 
+setting up your domain/hosting. You handle all of that.
+
+Payment is half now, half when you sign off on the final.
+
+---
+
+Explain to me properly when is the missing clauses intended to happen and when are unclear or vague terms detected and who is responsible for both of those things
+
+---
+
+Then give me an sow example which contains such vague and ambiguous terms that our system should detect, I will check and tell the output i got
+
+---
+
+Ok I am getting all the valid vague cases, now other thing that I wanted to ask was, the extraction of the sow showed that that deadline and revision rounds are labelled as null, are those things not being or they are being flagged but only the current top 5 more sever issues are being showed, which is the case can you verify ?
+
+---
+
+You can go ahead an implement the first upload and once done run tests to check whether its working fine or not
+
+---
+
+now provide client msg or request to test Check Client Request feature for all teh sows.
+
+---
+
+first for the test d the update fee requets shows gray area while u said it will show in scop why is that , is it accpetable.
+
+---
+
+when i am doing draft reply , i did it for the first request , but then when i did it for teh secod request it is not genereating the new draft msg it is still showing the msg genreated for the first requets .and also when i changed teh tone it was still same , so what is the issue here tell me
+
+---
+
+yes fix
+
+---
+
+what is this explain
+
+---
+
+ok got it now i want to change the ui so firslty i wnat you to explain tome what is the meaningof each button or item that is mentioend in this page what tehy signifies what s their role how is it helping the cleint, then i will tell you instrcutions or changes that i want
+
+---
+
+where do u see the count as revision button ? i dont see it . also Rule Override Caption (e.g., ⚡ Rule(s) R4 overrode LLM) do you think this feature or item is needed to to be shown to the client ? what does a client know about the rrules .
+
+---
+
+ok now tell me what rules i used .
+
+---
+
+my doubt is these rules and deciding factor for the verdict till we are using is by considereing that the project will be mostly used by the web developers right?
+
+---
+
+ok understood now the ui changes that i want are as follows :
+i dont think that the items that are curreenlty shown in the verdict is actually explainin the user what they mean the user experince is not easy here becuas ethey do not know things like hwat grey area means and what is confid meetrices , etc so make the ui better so when they see teh result page they understand teh result , aslo remove the rules part like we dicussed earliear it is not useful for the user ,also remove the name section /menu from the draft msg section.
+
+---
+
+ok understood now the ui changes that i want are as follows :
+i dont think that the items that are curreenlty shown in the verdict is actually explainin the user what they mean the user experince is not easy here becuas ethey do not know things like hwat grey area means and what is confid meetrices , etc so make the ui better so when they see teh result page they understand teh result , aslo remove the rules part like we dicussed earliear it is not useful for the user ,also remove the name section /menu from the draft msg section.first suggets the improvmenst we can do
+
+---
+
+remove the frim tone option as well , while explaning the inscope outscope n gray area do not use the word change becuase we do not knwo the clinet msg contains a chaneg or may be just a existing request check up the word messeage will be more better ?
+
+---
+
+remove the frim tone option as well , while explaning the inscope outscope n gray area do not use the word change becuase we do not knwo the clinet msg contains a chaneg or may be just a existing request check up the word messeage will be more better ? keep teh confid metrics item but expalin it better and it should not be shown with the results like a big score becusse this is a helpful item for user to trust the ai but it is creating confusion for user as well. now implement the following changes we discussed as well as these instructions .
+
+---
+
+how do i check my logs in antigravity ?
+
+---
+
+what does this means
+
+---
+
+does entire have logs of my conversations too or th eprompt that actually made change sin teh codE?
+
+---
+
+i am using entire can you tell me exact what is required by the hacktoberfest ? what kind of use of entire is required?
+
+---
+
+ok i will be doing after i complete working with the backend logic will it have all the session log ?will entire be able to capture all the logs even if i push on github and log in on entire at the end of my project?
+
+---
+
+ok got it . we have completed the ui changes that i needed. give me a chcek point of the entire project what else is left to chcek for example we chcekd the extraction logic ect
+
+---
+
+create a detailed readme of what we have done till now .
+
+---
+
+ok works
+
+---
+
+create a detailed readme filenamed current of what we have done till now .
+
+---
+
+ok this is the implementation plan that i have for the builidng the project presistance , gothrough it and tell me can we integrate this?
+
+---
+
+ok this is the implementation plan that i have for the builidng the project presistance , gothrough it and tell me can we integrate this?# Project Persistence (Save & Reload): Implementation Plan
+
+Feature plan for **Scope-Creep Catcher**, built for the Hacktoberfest Open-Source AI Challenge (Week 2: Side Hustle).
+
+**Time-box:** about 4 to 5 hours total. Deadline is Sun Oct 18, 11:59 PM PDT (about 12:29 PM IST on Mon Oct 19), and the gold eval, demo video, first user and DEV post still matter more for the score. If time runs short, cut from the "Cut list" at the bottom, never the tests.
+
+> **Note:** this plan was written without seeing `engine/state.py` or `app.py`. The progress report says `state.py` already has persistence and tests, so **Step 0 is an audit** to find out what is really missing. Only build the gaps.
+
+---
+
+## 1. Goal
+
+When you create a project (for example `apex-fitness`):
+
+1. It is saved to `data/projects/apex-fitness.json`.
+2. After a browser reload (F5) or after stopping and restarting the app, you can reopen that project with its **saved SOW, stress-test cards, client-request decisions, log and revision quota intact**.
+
+**Why this matters for the challenge**
+- Supports "data stays on your machine": everything is local JSON, works with Wi-Fi off.
+- Needed for the first-user session, so they can come back to their project.
+- Technical Execution: atomic saves, validation, migration and tests.
+
+---
+
+## 2. Step 0: Audit (30 min)
+
+Read your code and one existing `data/projects/*.json` file, then answer:
+
+1. Does `app.py` save after every state-changing action, or only some?
+2. Is there an "open existing project" control, or does the sidebar only create new projects?
+3. What does a real saved file contain? Define schema v1 from that file, not from this plan.
+4. Are derived values (top-bar totals) saved? They should be recomputed on load instead.
+
+Why this matters: a browser refresh creates a **new Streamlit session**, so `st.session_state` is gone. The saved file is the only thing that survives, so a project list and a "last opened" memory are probably the missing pieces.
+
+---
+
+## 3. What gets saved (schema v1)
+
+| Field | Notes |
+|---|---|
+| `schema_version`, `project_id` (slug), `name`, `created_at`, `updated_at` | Version allows migrating old files |
+| `settings` | Hourly rate, currency, contract price, niche profile |
+| `sow_text`, `sow_hash`, `sow` | Extracted facts, including any manual edits |
+| `stress` | Missing (M) and vague (A) cards with status |
+| `quota` | Raw `revisions_used` counter |
+| `checks` | Each client message with its decisions: final verdict, rule ids, both quotes, quote methods, hours, price, model name, `sow_hash` at the time, optional draft text |
+| `log` | Entries with status Pending / Approved / Declined |
+
+Rules:
+- Give every check and log entry a short id.
+- **Do not save derived values** (top-bar totals, percentages). Recompute them from the log on load.
+- Match the type names to your existing `state.py` models.
+
+---
+
+## 4. Step 1: Core save and load (pure Python, about 1.5h)
+
+Add to `engine/state.py`:
+
+```python
+import re, json, os, shutil, tempfile, unicodedata
+from pathlib import Path
+
+DATA_DIR = Path(os.getenv("SCC_DATA_DIR", "data/projects"))   # tests override this
+SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,62}$")
+RESERVED = {"con", "prn", "aux", "nul", "com1", "lpt1"}       # Windows reserved names
+
+def slugify(name: str) -> str:
+    s = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
+    s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")[:63].strip("-")
+    return "untitled" if not s else (f"{s}-project" if s in RESERVED else s)
+
+def project_path(slug: str) -> Path:
+    if not SLUG_RE.match(slug):
+        raise ValueError("bad project id")
+    p = (DATA_DIR / f"{slug}.json").resolve()
+    if p.parent != DATA_DIR.resolve():
+        raise ValueError("bad path")
+    return p
+
+def save_project(state) -> None:
+    state.updated_at = now_iso()
+    path = project_path(state.project_id)
+    text = json.dumps(state.model_dump(mode="json"), indent=2, ensure_ascii=False)
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=DATA_DIR, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(text); f.flush(); os.fsync(f.fileno())
+        if path.exists():
+            shutil.copy2(path, path.with_suffix(".json.bak"))   # keep one backup
+        os.replace(tmp, path)                                    # atomic swap
+    except Exception:
+        if os.path.exists(tmp):
+            os.remove(tmp)
+        raise
+
+class ProjectLoadError(Exception): ...
+
+def load_project(slug: str):
+    path = project_path(slug)
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as e:
+        raise ProjectLoadError(f"Could not read {path.name}: {e}") from e
+    try:
+        # ProjectState uses extra="ignore"; missing fields get defaults
+        return ProjectState.model_validate(migrate(raw))
+    except ValidationError as e:
+        raise ProjectLoadError(f"{path.name} has an unexpected format") from e
+
+def list_projects() -> list[dict]:
+    """Return name, slug, updated_at for each *.json. Mark unreadable files, never crash."""
+```
+
+Design reasons:
+- **Temp file then `os.replace`:** a crash mid-write cannot leave a half-written JSON file.
+- **`encoding="utf-8"` and `ensure_ascii=False`:** the default encoding on Windows can break smart quotes or the ₹ symbol.
+- **Strict slug and path check:** a project name like `../../x` cannot write outside the folder.
+- **Never overwrite a file that failed to load.** Show an error and offer the `.bak` copy.
+- **`migrate()`:** treat a missing `schema_version` as 0 so your existing files still load.
+- **Name collisions:** if the slug exists, say "already exists, open it or pick another name". Never overwrite silently.
+
+---
+
+## 5. Step 2: Wire it into Streamlit (about 1.5h)
+
+### 5.1 One source of truth
+Keep a single `st.session_state.project` object. Widgets update it through callbacks. If `app.py` currently uses many loose keys (`sow_text`, `rate`, and so on), consolidate them first.
+
+### 5.2 Save only when something changed
+Streamlit reruns the whole script on every click, so do not save blindly.
+
+```python
+import hashlib
+from datetime import datetime
+
+def persist_if_changed():
+    p = st.session_state.get("project")
+    if not p:
+        return
+    snap = hashlib.sha256(p.model_dump_json(exclude={"updated_at"}).encode()).hexdigest()
+    if snap != st.session_state.get("_saved_hash"):
+        save_project(p)
+        st.session_state["_saved_hash"] = snap
+        st.session_state["_saved_at"] = datetime.now().strftime("%H:%M:%S")
+
+# call persist_if_changed() at the very end of app.py
+```
+
+### 5.3 Open a project without stale leftovers
+```python
+def open_project(slug):
+    p = load_project(slug)
+    for k in list(st.session_state.keys()):            # clear the previous project's leftovers
+        if k.startswith(("reply_area_", "draft", "client_msg", "last_check")):
+            del st.session_state[k]
+    st.session_state.project = p
+    st.session_state._saved_hash = hash_of(p)
+    st.session_state["sb_rate"] = p.settings.hourly_rate   # set widget keys BEFORE widgets render
+    st.query_params["project"] = p.project_id
+    (DATA_DIR / ".last_opened").write_text(p.project_id, encoding="utf-8")
+```
+
+Streamlit gotcha: a widget that already has a `key` ignores a new `value=`. Set `st.session_state[key]` before the widget is created, or do it inside a callback.
+
+### 5.4 On startup
+1. Read `st.query_params.get("project")`, else the `.last_opened` file.
+2. If that project file exists, call `open_project` inside `try/except ProjectLoadError`.
+3. A bad file shows an error in the sidebar and the app keeps running.
+4. Check that your Streamlit version supports `st.query_params`.
+
+### 5.5 Sidebar "Project" block (top of sidebar)
+- Dropdown of existing projects, for example "Apex Fitness, updated 14:03"
+- "New project" name box with a Create button (uses `slugify`, handles collisions)
+- Caption: `Saved to data/projects/<slug>.json, last saved HH:MM:SS`. This is also good evidence in the demo video.
+
+### 5.6 On load
+- **Do not re-run the model.** Show stress cards and decisions from stored data.
+- Optional cheap integrity check: re-verify stored quotes against the stored SOW with `verify_quote` (no LLM needed).
+- **Stale-analysis banner (P1):** if the SOW text changes, its hash no longer matches saved analyses. Show "this analysis is from an older SOW, re-run" and do not delete anything.
+
+---
+
+## 6. Step 3: Automated tests (about 1.5h)
+
+Use `tmp_path` and `SCC_DATA_DIR` so tests never touch real project data.
+
+- [ ] `slugify`: spaces, capitals, symbols, empty string, non-English text, Windows reserved names
+- [ ] Path traversal such as `../../etc/x` is rejected
+- [ ] Saving creates `<slug>.json` that is valid UTF-8 JSON
+- [ ] **Round trip:** save then load gives equal SOW facts, stress cards, quota, checks (verdict, rule ids, quote methods) and log
+- [ ] Smart quotes, `₹` and emoji survive the round trip
+- [ ] Atomic write: monkeypatch `os.replace` to raise, then the original file is unchanged and no `.tmp` is left behind
+- [ ] Corrupt file raises `ProjectLoadError`, and `list_projects` still returns the other projects
+- [ ] An old-format fixture (copy a real current file into `tests/fixtures/`) loads, and `migrate` fills defaults
+- [ ] Unknown extra fields are ignored
+- [ ] Creating a project with an existing slug does not overwrite it
+- [ ] Top-bar totals are the same before saving and after loading (recomputed, not stored)
+
+---
+
+## 7. Step 4: Manual QA (about 45 min)
+
+This matches the original "what to test / what to verify" items.
+
+| # | Do this | Expect |
+|---|---|---|
+| M1 | Create `apex-fitness` | `data/projects/apex-fitness.json` exists |
+| M2 | Paste the Apex SOW, extract, run stress test, check two client messages, add one to the log, count one revision, set a status to Approved | Open the JSON: all of it is there |
+| M3 | Press **F5** in the browser | Same project reopens, every tab and the top bar show identical numbers |
+| M4 | Stop Streamlit (Ctrl+C), run `streamlit run app.py` again, open the project from the dropdown | Identical to before |
+| M5 | Switch to a second project | No draft text or totals from the first project appear |
+| M6 | Hand-corrupt one JSON file | Friendly error, other projects still open |
+| M7 | Turn Wi-Fi off, save and reload | Works the same |
+
+---
+
+## 8. Definition of done
+
+- [ ] M1 to M7 all pass
+- [ ] `pytest` is green including the new tests
+- [ ] `data/projects/` is in `.gitignore`
+- [ ] Changes committed so the Entire session gets a clean checkpoint
+
+## 9. Cut list (if time runs short)
+
+Cut in this order: delete / rename / export-import project, multi-tab conflict warning, stale-SOW banner, `.bak` restore button. Keep: atomic save, round-trip tests, open from list, restore after F5.
+
+## 10. Privacy notes
+
+- Saved projects contain real SOW text. Keep `data/projects/` git-ignored.
+- Your first user's real SOW will be saved there. Delete or anonymize it after the session.
+- Record the demo video with a synthetic project like `apex-fitness`, never a real one.
+- Run the gold eval with a separate data directory (`data/gold/`), never in `data/projects/`.
+
+---
+
+explain more clearly what currently is happening and compare what will happen after this plan implementation and will it break the porblem statement requiremnet?
+
+---
+
+yes go ahead and implement the plan.
+
+---
+
+i cant detete a project right ?
+
+---
+
+yes make the button aslo where we are seeing all the projects make mak eit a seprate menu where we will see our project all and then from here we can delete and how prevouly only current project was shown inteh side bar . and then all the test and give actual and test output
+
+---
+
+this is the error i am seeing pin point the issue
+
+---
+
+this is the error i am seeing pin point the issue
+
+---
+
+do not make   any changes pin point where teh issue is right now when i am clicking to open a project it snot showng anything nore i can click on current project and see the page
+
+---
+
+implement 2
+
+---
+
+i want to build the layer , when i am running the app from start orstrating it by tying streamlit run app.py it is still showing me where i left ysterday , but i want whenever i start it agian it should open a new project or the home page , and then if i refresh it should have the presistant layer becuasse see if i want to see the work i did last night it will be ther ein the saved project item , so if i start today the app it should show me a clean new project site but the presistant layer still must exist when i refresh the app the current work that i am doing taht should persistant  , liek a session kind of thing ? is it possible to built it while maintaning the requirements of the problem statement.
+
+---
+
+what are exaclty these 10k things ? i want to commit my changes to git hub finally so i wnat to confirm so I want to confirm what goes into gitignore and what not moreover put the /docs folder in gitignore
+
+---
+
+Why am i seeing this
