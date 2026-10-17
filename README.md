@@ -8,7 +8,7 @@
 
 ## 🌟 What It Does
 
-Freelancers lose thousands of dollars each year to "scope creep"—the slow accumulation of unbilled tweaks, vague client demands, and open-ended revision cycles. 
+Freelancers lose thousands of dollars each year to "scope creep" the slow accumulation of unbilled tweaks, vague client demands, and open-ended revision cycles. 
 
 **Scope-Creep Catcher** is a private, local-first assistant that turns contracts into deterministic guardrails:
 
@@ -73,7 +73,7 @@ Open your browser at `http://localhost:8501`.
 
 ## 🧠 Architectural Principle: "LLM Reads, Code Decides"
 
-Large Language Models alone cannot be trusted with legal boundaries or billing math—they hallucinate clauses, waffle on boundaries, and drift on numbers. Scope-Creep Catcher uses a strict hybrid design where **the LLM is only a semantic parser, and deterministic Python code makes all legal verdicts and calculations**.
+Large Language Models alone cannot be trusted with legal boundaries or billing math they hallucinate clauses, waffle on boundaries, and drift on numbers. Scope-Creep Catcher uses a strict hybrid design where **the LLM is only a semantic parser, and deterministic Python code makes all legal verdicts and calculations**.
 
 ```
 [ SOW Text + Rate ] ──> S1: Fact Extraction (LLM + Regex Fallback) ──> SOWFacts (Typed JSON)
@@ -243,7 +243,7 @@ Comprehensive benchmark results across all local models and Backboard cloud runs
 
 | Model | Evaluation Mode | Split | N | Accuracy | False Accusation Rate (FAR) |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| **`qwen2.5:3b`** *(Recommended)* | **Full Pipeline (S1→S5)** | **test** | **15** | **60.0%** | **0.0%** 🏆 |
+| **`qwen2.5:3b`** *(used for this project)* | **Full Pipeline (S1→S5)** | **test** | **15** | **60.0%** | **0.0%** 🏆 |
 | `gemma2:2b` | Full Pipeline (S1→S5) | test | 15 | 33.3% | 14.3% |
 | **`qwen2.5:3b`** | Baseline (Raw Prompt) | test | 15 | 73.3% | 28.6% |
 | `gemma2:2b` | Baseline (Raw Prompt) | test | 15 | 60.0% | 14.3% |
@@ -286,7 +286,7 @@ All 100 unit tests run completely offline with no live LLM required in ~1.35 sec
 pytest -v
 ```
 ```text
-============================= 100 passed in 1.35s =============================
+ 100 passed in 1.35s 
 ```
 
 ### 2. Run Local Evaluation Benchmark
