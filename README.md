@@ -8,7 +8,7 @@
 
 ## 🌟 What It Does
 
-Freelancers and agency owners lose thousands of dollars each year to **"scope creep"**—the slow, sneaky accumulation of unbilled tweaks, vague client demands, and endless revision rounds that turn a profitable gig into unpaid overtime.
+Freelancers and agency owners lose thousands of dollars each year to **"scope creep"** the slow, sneaky accumulation of unbilled tweaks, vague client demands, and endless revision rounds that turn a profitable gig into unpaid overtime.
 
 To solve this, **Scope-Creep Catcher** is built around **4 Core Features** that protect you across the three phases of any client contract:
 
@@ -112,8 +112,8 @@ When you run Scope-Creep Catcher, there are two main parts:
 1. **The Frontend (`app.py`):** The visual Streamlit dashboard you interact with in your browser.
 2. **The Backend Engine (`engine/`):** The Python processing machinery under the hood that parses contracts, checks quotes, enforces rules, and runs calculations.
 
-### What Does `S1` to `S8` Mean?
-Think of the Engine as an **automated 8-step assembly line** (just like a car factory with Station 1 through Station 8). Every contract and client message passes through these sequential steps:
+### Automated 8-step assembly line `S1` to `S8`
+The Engine is an **automated 8-step assembly line**. Every contract and client message passes through these sequential steps:
 
 ```
 [ SOW Contract Text ] ──> S1: Fact Extraction (AI reads text into structured schema)
