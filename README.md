@@ -39,7 +39,7 @@ Feature 1: SOW Stress Test          Feature 2: Request Checker             Featu
 |:---:|---|---|---|---|
 | **1** | **Two-Tier SOW Stress Test** | **Before You Sign** | Scans your draft contract before you send it to the client. Detects **missing standard clauses** (`M1..Mn`) and highlights **dangerous ambiguous phrasing** (`A1..An`) with one-click bulletproof rewrites. | Catches vague traps like *"minor adjustments as needed"* and rewrites them into *"up to 2 rounds of design revisions, capped at 4 hours total"*. |
 | **2** | **Client Request Checker** | **During the Project** | Takes messy client messages, splits them into atomic requests, matches each against your signed contract, and issues a reliable **traffic-light verdict** (🟢 Included, 🔴 Billable Extra, 🟡 Clarification Needed) with 0% false accusations. | When a client asks to *"fix the mobile menu and also add a blog section"*, it separates them: menu fix is 🟢 Included, blog is 🔴 Billable Extra. |
-| **3** | **Priced Reply & Change-Order Generator** | **Closing the Deal** | Automatically estimates extra hours and fees from your hourly rate, drafting polite pushback emails (Friendly or Formal) and itemized, ready-to-sign Markdown Change Orders. | Generates: *"I'd love to build the blog! That falls outside our original 5-page scope. Here is Change Order #1 for 6 hours ($450). Reply 'APPROVED' to proceed."* |
+| **3** | **Priced Reply & Change-Order Generator** | **Closing the Deal** | Automatically estimates extra hours and fees from your hourly rate, drafting polite pushback emails (Friendly or Formal) and itemized, ready-to-sign Markdown Change Orders. | Generates: *"I'd love to build the blog! That falls outside the agreed 5-page scope. Here is Change Order #1 for 6 hours ($450). Reply 'APPROVED' to proceed."* |
 | **4** | **Live Quota Tracker & Audit Log** | **Throughout the Project** | Tracks how many agreed revision rounds have been consumed (e.g. `1 / 2 rounds used`) and maintains a permanent, local chronological audit trail of all approved requests. | When a client asks for a 3rd round of changes, the system flags that their 2-round quota has been exhausted and converts it to a billable change order. |
 
 ---
@@ -110,25 +110,23 @@ Open your browser at `http://localhost:8501`.
 
 ## 🧠 Architectural Principle: "LLM Reads, Code Decides"
 
-### Why Do We Need This Principle? (In Plain English)
-Imagine hiring an AI to help you manage your freelance clients. If you let a standard AI model (like ChatGPT, Llama, or Claude) read your contract and decide on its own whether work is free or billable, **it will fail in three dangerous ways**:
-1. **The AI hallucinates contract terms:** It invents clauses that were never in your agreement to be helpful.
-2. **The AI is bad at arithmetic:** It hallucinates numbers and math ($150/hr × 3 hrs = $600?).
-3. **The AI is overly polite (Sycophancy):** If a client writes a sweet, polite email (*"Could you please do this tiny little favor for me?"*), the AI feels bad and says *"Sure, that's included!"* even if the request requires 20 hours of unbilled labor.
+### Why This Principle Is Essential
+When managing client contracts and billing, relying on a raw language model to decide whether work is included or extra causes three catastrophic failure modes:
+1. **Hallucinated Clauses:** LLMs invent contract terms or conditions that were never agreed upon.
+2. **Arithmetic Inconsistency:** LLMs cannot guarantee mathematical precision for billable hours, rates, and totals.
+3. **Tone Bias (Sycophancy):** When clients write polite or persuasive emails (*"Could you quickly do this tiny favor?"*), LLMs are easily swayed by tone and mistakenly classify billable work as included.
 
-In freelance client management, **a false accusation is fatal**. If you wrongly accuse a good client of scope creep on work they already paid for, you destroy trust and damage your business reputation.
+In client services, a single false accusation of scope creep destroys professional trust. Conversely, failing to catch out-of-scope work results in unpaid labor.
 
-### The Courtroom Analogy: The Paralegal vs. The Judge
-To solve this, we designed the system around a strict separation of powers:
+### The Architectural Solution: Strict Separation of Concerns
+To eliminate these risks, Scope-Creep Catcher enforces a strict separation between linguistic parsing and legal/financial decision-making:
 
-$$\text{\bf "The LLM is the Paralegal. Deterministic Python Code is the Judge and Accountant."}$$
-
-| Role | Who Does It? | What They Do |
+| Responsibility | Component | Exact Technical Function |
 |---|---|---|
-| **The Paralegal (The Reader)** | **The Local LLM (`qwen2.5:3b`)** | Reads messy, conversational human English (in contracts and long client emails) and translates it into clean, structured data. |
-| **The Judge & Accountant (The Decider)** | **Deterministic Python Code (`engine/`)** | Verifies that quotes actually exist verbatim in the contract, enforces strict legal contract rules, computes billing math ($h \times \text{rate}$), and issues the binding verdict. |
+| **Reading & Structuring** | **Local LLM (`qwen2.5:3b`)** | Translates unstructured human language (in contracts and compound emails) into validated, strongly-typed Pydantic data schemas. Suggests an initial semantic interpretation. |
+| **Verification & Rulings** | **Deterministic Python Code (`engine/`)** | Verifies verbatim text citations with RapidFuzz, applies 9 contract rules (`R0`–`R8`) that strictly override the model, computes billing math ($h \times \text{rate}$), and issues the binding verdict. |
 
-> **Golden Rule:** The AI is never allowed to guess a price or issue the final verdict. **Code always has the final word.**
+> **Core Constraint:** The LLM is strictly an information extractor. It is never permitted to issue a final verdict or calculate billing prices. **Deterministic Python code always has final authority.**
 
 ---
 
@@ -220,7 +218,7 @@ In Step 4, the AI generates a guess. But because LLMs can be tricked by polite w
 
 ### How Code Overrides the AI (Real-World Before & After Examples)
 
-To understand where and why rules make changes, consider these actual examples from our evaluation benchmark:
+To understand where and why rules make changes, consider these actual examples from the empirical evaluation benchmark:
 
 | Real-World Scenario | What the AI Guessed in Step 4 | Which Rule Triggered in Step 5? | What Code Changed (The Final Verdict) | Why Code Overrode the AI |
 |---|:---:|:---:|:---:|---|
@@ -334,38 +332,36 @@ scope-creep-catcher/
 
 ---
 
-## 🤝 Hacktoberfest Partner Technologies & Integration Architecture
-
-Scope-Creep Catcher was designed for the **Hacktoberfest Open-Source AI Challenge, Week 2: Side Hustle**. It integrates three Hacktoberfest partner technologies while strictly maintaining a **100% offline, zero-data-leak privacy guarantee** for freelancers:
-
-| Partner Technology | Category / Role | Implementation in Project | Privacy & Data Handling |
-| :--- | :--- | :--- | :--- |
-| **Google Gemma 2** | **Featured Partner**<br>(Open-Weight Models) | Integrated locally via Ollama (`gemma2:2b`). Benchmarked across dev/test splits in `eval/run_eval.py` to compare lightweight model accuracy against Qwen 2.5 3B. | **100% Offline & Local.** Model weights execute entirely on-device; zero outbound data. |
-| **Backboard.io** | **Partner Technology**<br>(AI Infrastructure & Memory) | Cloud evaluation harness (`eval/run_backboard.py`) using `backboard-sdk`. Evaluates cloud-hosted 70B models against small open models on our synthetic benchmark. | **Synthetic Data ONLY.** Real user contracts in `data/projects/` **NEVER** leave your laptop. Only public synthetic gold cases in `data/gold/` are evaluated. |
-| **Entire.io** | **Partner Technology**<br>(Agent Observability) | Built-in agent observability using the **Entire CLI**, capturing every prompt, tool execution, and code checkpoint linked to git commits. | **Developer Telemetry.** Captures agent trajectories during local build sessions. |
-
 ---
 
-### 🛡️ Why Backboard Cloud Eval Does Not Compromise Local Privacy
+## 🤝 Hacktoberfest Partner Technologies & The Evaluation Story
 
-The core challenge of building this offline, privacy-first side-hustle tool was incorporating cloud partner technologies without leaking confidential client contracts:
+Scope-Creep Catcher was designed for the **Hacktoberfest Open-Source AI Challenge, Week 2: Side Hustle**. The challenge featured three designated partner technologies:
+- 🌟 **Google Gemma 2** (Featured Partner: Open-Weight Models)
+- ☁️ **Backboard.io** (Featured Partner: AI Cloud Infrastructure & Memory)
+- 🔍 **Entire.io** (Featured Partner: Agent Observability)
+
+### 🛡️ The Privacy Firewall: 100% Offline Runtime vs. Cloud Evaluation
+
+A fundamental principle of this project is that **freelancers' client contracts, rates, and emails must remain strictly confidential**. Therefore, I built an architectural firewall between the production app and developer benchmarking:
 
 ```
-┌────────────────────────────────────────────────────────┐
-│ 1. PRODUCTION RUNTIME (Freelancers / Streamlit App)    │
-│    • Real Client Contracts & Messages                  │
-│    • 100% Local, Offline & Private                     │
-│    • Ollama (Open-Weight: Qwen 2.5)          │
-│    • NO Cloud APIs, NO Data Leaks                      │
-└────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│ 1. PRODUCTION RUNTIME (Freelancers / Streamlit App: app.py)            │
+│    • Real Client Contracts, Rates & Messages                           │
+│    • 100% Local, Offline & Private (Ollama on CPU)                     │
+│    • NO Cloud APIs, NO Internet Needed, ZERO Data Leaks                │
+└────────────────────────────────────────────────────────────────────────┘
 
-┌────────────────────────────────────────────────────────┐
-│ 2. DEVELOPER BENCHMARK (eval/run_backboard.py)         │
-│    • Synthetic Gold Cases ONLY (data/gold/cases.json)  │
-│    • Backboard.io Cloud API (Partner Technology)       │
-│    • Benchmarks 70B cloud models vs. local models      │
-│    • Results logged to results/RESULTS.md              │
-└────────────────────────────────────────────────────────┘
+                                 VS.
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ 2. DEVELOPER BENCHMARK (eval/run_backboard.py)                         │
+│    • Synthetic Public Test Cases ONLY (data/gold/cases.json)           │
+│    • Backboard.io Cloud Platform (evaluating Llama 3.1 70B Cloud)      │
+│    • Measures how a giant 70B cloud model compares to a laptop model   │
+│    • Real client projects in data/projects/ NEVER touch Backboard      │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 1. **Production Runtime is 100% Offline:** When freelancers use the Streamlit application ([app.py](app.py)), all parsing, decision rules, and change order generations execute entirely offline on local Ollama weights. Wi-Fi can be completely turned off.
@@ -373,16 +369,25 @@ The core challenge of building this offline, privacy-first side-hustle tool was 
 
 ---
 
-## Model Selection Decision Flow: Why I Chose Qwen 2.5 3B via Empirical Evaluation (`eval/`)
+## 🏆 Model Selection Decision Flow: How I Chose the Engine Model
 
-A fundamental engineering question for this project was: **Which open-weight model should power the final offline application?**
+When building an AI tool for solo freelancers, choosing an LLM cannot be based on guesswork or hype. I followed a strict **5-stage engineering decision process** to evaluate and choose the right engine:
 
-When handling legal contracts and client billing, you cannot choose an AI based on guesses. I designed the **`eval/`** benchmarking suite to run a rigorous **empirical selection tournament** to answer:
-1. **Local Contender Battle:** How does **Qwen 2.5 (3B)** compare against Google **Gemma 2 (2B)** on structured legal parsing?
-2. **Cloud vs. Local Benchmark:** Can a 3B model running on a budget laptop match or beat a giant **70B parameter model in the cloud** (`meta-llama/llama-3.1-70b-instruct` via **Backboard.io**)?
-3. **Safety Verification:** Which model guarantees a **0.0% False Accusation Rate**, ensuring freelancers never insult clients with false scope-creep claims?
+### Stage 1: Hardware & Privacy Constraints (CPU vs. GPU)
+Freelancers and solo agency owners do not carry $10,000 GPU servers. They work on standard laptops (MacBooks, Intel/AMD CPUs with 8GB to 16GB of RAM) often in coffee shops or while traveling.
+* **100% Offline & Private:** Client contracts and billing rates are strictly confidential; no data could be sent to external cloud APIs during daily use.
+* **CPU Execution:** The model had to run smoothly on a standard laptop CPU without thermal throttling or heavy lag.
+* **Model Class (2B–3B parameters):** Large 7B+ models are too slow and resource-heavy for CPU execution, so I restricted the search to the modern **2B to 3B parameter class** running locally via [Ollama](https://ollama.com).
 
-Here is the exact decision flow from test design to final production selection:
+### Stage 2: Narrowing Down to the 2 Viable Contenders
+Looking at the open-weight ecosystem, two standout models met the CPU and memory criteria:
+1. **Google Gemma 2 (2B)** (`gemma2:2b`): Google's cutting-edge compact architecture, and a **featured Hacktoberfest partner model**. Extremely lightweight and fast on consumer laptops.
+2. **Qwen 2.5 (3B)** (`qwen2.5:3b`): Alibaba's compact model renowned for outstanding structured JSON instruction-following and coding logic.
+
+### Stage 3: The Empirical Tournament (`eval/`)
+Rather than simply picking the featured partner model blindly, I built an automated benchmark suite (`eval/`) with **23 synthetic real-world freelance contract scenarios** (`data/gold/cases.json`) across web dev, copywriting, and media production.
+
+To see whether a laptop model could even compete with cloud giants, I also used **Backboard.io** (cloud partner) to evaluate a massive 70-billion-parameter cloud model (`meta-llama/llama-3.1-70b-instruct`) on the exact same synthetic test cases.
 
 ```
                   ┌──────────────────────────────────────────────┐
@@ -396,12 +401,12 @@ Here is the exact decision flow from test design to final production selection:
    ┌───────────────────────────┐                   ┌───────────────────────────┐
    │ 2. LOCAL TEST: run_eval.py│                   │ 3. CLOUD BENCHMARK:       │
    │    Local Ollama Models    │                   │    run_backboard.py       │
-   │    • Qwen 2.5 3B vs.      │                   │    • Llama 3.1 70B Cloud  │
-   │      Gemma 2 2B           │                   │    • Backboard.io Partner │
-   │    • Baseline vs Pipeline │                   │    • Synthetic Data Only  │
+   │    • Qwen 2.5 3B          │                   │    • Llama 3.1 70B Cloud  │
+   │    • Google Gemma 2 2B    │                   │    • Backboard.io Partner │
+   │    • Tested Offline       │                   │    • Synthetic Data Only  │
    └─────────────┬─────────────┘                   └─────────────┬─────────────┘
                  │                                               │
-                 │      Raw Execution Data (results/raw/*.json)  │
+                 │      Raw Execution Logs (results/raw/*.json)  │
                  └───────────────────────┬───────────────────────┘
                                          │
                                          ▼
@@ -415,47 +420,42 @@ Here is the exact decision flow from test design to final production selection:
                          ┌───────────────────────────────┐
                          │ 5. VERDICT: make_report.py    │
                          │    Compiles results/RESULTS.md│
-                         │    Crowns the Winning Model   │
+                         │    Selects the Winner         │
                          └───────────────┬───────────────┘
                                          │
                                          ▼
                          ┌───────────────────────────────┐
-                         │ 6. FINAL PRODUCTION RUNTIME   │
-                         │    qwen2.5:3b selected in     │
+                         │ 6. FINAL PRODUCTION APP       │
+                         │    qwen2.5:3b locked into     │
                          │    engine/config.py & app.py  │
                          └───────────────────────────────┘
 ```
 
+### Stage 4: Test Findings & The Issues Discovered with Gemma 2
+When running `gemma2:2b` through the evaluation pipeline, three concrete technical issues emerged:
+1. **Field Omissions in SOW Parsing:** Gemma 2:2b frequently dropped required fields (such as `pages`, `revision_rounds`, and `client_responsibilities`) during contract extraction. I had to write extensive regex fallbacks in `engine/sow.py` specifically to rescue fields that Gemma omitted.
+2. **Paraphrasing vs. Verbatim Quotes:** When citing contract clauses, Gemma tended to paraphrase rather than copying verbatim text. This caused the deterministic RapidFuzz verifier to reject citations as unverified.
+3. **The 14.3% False Accusation Rate (FAR):** In freelance client management, falsely accusing a client of scope creep on work they already paid for is catastrophic. Gemma 2:2b scored only 33.3% test accuracy and falsely accused clients in **14.3% of test cases**.
+
+### Stage 5: Final Production Selection (Qwen 2.5 3B)
+In contrast, `qwen2.5:3b` solved all three issues:
+* Followed strict Pydantic JSON schemas reliably without dropping fields.
+* Extracted high-fidelity verbatim quotes that passed RapidFuzz verification.
+* Achieved **60.0% pipeline accuracy** on the test suite (nearly double Gemma's 33.3%).
+* Achieved a **0.0% False Accusation Rate (zero false accusations)** under the rule engine.
+
+**Final Decision:**  
+I selected **`qwen2.5:3b`** as the default production model in `engine/config.py` and `app.py`. At the same time, I preserved full compatibility for **`gemma2:2b`** (`ollama pull gemma2:2b`), so users who prefer Google's ultra-lightweight partner model can still run it seamlessly.
+
 ---
 
-### 🧩 Why Each File in `eval/` Exists (The Step-by-Step Flow)
-
-1. **`data/gold/cases.json` — The "Gold Standard Exam"**
-   - Contains 23 synthetic, professionally written freelance contract scenarios across web development, copywriting, and media production.
-   - Each case includes the raw Statement of Work, a realistic client email, labeled atomic requests, ground-truth verdicts (`in_scope`, `out_of_scope`, `gray_area`), difficulty ratings (`obvious`, `subtle`), and exact contract clause references.
-
-2. **`eval/run_eval.py` — The Local Model Evaluator**
-   - **Why it's there:** Tests our local open-weight models (`qwen2.5:3b` and `gemma2:2b`) running on-device inside Ollama.
-   - **The Two Modes:**
-     - **Baseline Mode:** Prompts the raw LLM directly without any Python guardrails to measure the model's unassisted reasoning.
-     - **Pipeline Mode:** Runs the full 8-step engine (`S1`→`S5`) including Pydantic extraction, RapidFuzz quote verification, and the 9 deterministic contract rules.
-   - **Output:** Writes raw JSON execution logs to `results/raw/eval_<model>_<mode>_<split>.json`.
-
-3. **`eval/run_backboard.py` — The Cloud Partner Benchmark**
-   - **Why it's there:** Connects to **Backboard.io** via the official `backboard-sdk` to evaluate a giant cloud-hosted 70B parameter model (`meta-llama/llama-3.1-70b-instruct`).
-   - **The Architectural Rationale:** Allows us to answer: *"Can our 3B parameter model on a local laptop match or beat a 70B model in the cloud?"* (Result: Local Qwen + Rules scored **60.0%**, while raw Cloud 70B scored **20.0%**).
-   - **Privacy Boundary:** Strictly limited to public synthetic test cases. Confidential freelancer projects in `data/projects/` never touch Backboard.
-   - **Output:** Writes raw JSON execution logs to `results/raw/backboard_<model>_<split>.json`.
-
-4. **`eval/metrics.py` — The Grading Engine & Mathematical Formulas**
-   - **Why it's there:** Standard machine learning metrics (like simple accuracy) are dangerous in client management. In freelancing, errors are highly asymmetric:
-     - **False Accusation Rate (FAR):** If an AI wrongly claims an included revision is an unbilled extra, the freelancer confronts the client with an unjustified invoice, destroying client trust. `metrics.py` strictly measures this via:
-       $$\text{FAR} = \frac{\text{False Out-of-Scope Accusations}}{\text{Total In-Scope or Gray-Area Requests}}$$
-     - **Confusion Matrix:** Generates structured Markdown tables showing exactly where models waffle (e.g. classifying `in_scope` work as `gray_area`).
-     - **Per-Difficulty Breakdown:** Evaluates accuracy separately on obvious vs. subtle contract edge cases.
-
-5. **`eval/make_report.py` — The Automated Report Compiler**
-   - **Why it's there:** Collects all raw JSON output files in `results/raw/`, executes grading formulas from `metrics.py`, and compiles the official benchmark report: **[results/RESULTS.md](results/RESULTS.md)**.
+### 🧪 The `eval/` Benchmark Suite
+The `eval/` directory is the automated testing lab used to measure model accuracy and client safety before deploying to production:
+* **`data/gold/cases.json`**: 23 synthetic, professionally written freelance contract scenarios with ground-truth verdicts across web dev, copywriting, and design.
+* **`eval/run_eval.py`**: Benchmarks local Ollama models (`qwen2.5:3b`, `gemma2:2b`) in both raw baseline and full pipeline modes.
+* **`eval/run_backboard.py`**: Evaluates the cloud 70B model baseline via Backboard.io strictly using public synthetic test cases.
+* **`eval/metrics.py`**: Calculates classification accuracy and the critical **False Accusation Rate (FAR)** to ensure no client is wrongly charged.
+* **`eval/make_report.py`**: Compiles all raw evaluation runs from `results/raw/` into the consolidated report at **[results/RESULTS.md](results/RESULTS.md)**.
 
 ---
 
@@ -475,7 +475,7 @@ The generated report card at **[results/RESULTS.md](results/RESULTS.md)** contai
 
 ### Key Benchmark Takeaways:
 - **`qwen2.5:3b` achieves double the pipeline accuracy** of `gemma2:2b` on the test suite (60.0% vs. 33.3%).
-- **`qwen2.5:3b` achieves 0.0% False Accusations** under our deterministic rule engine on the test split. Falsely accusing a client of scope creep destroys professional relationships; our rule engine guarantees safety.
+- **`qwen2.5:3b` achieves 0.0% False Accusations** under the deterministic rule engine on the test split. Falsely accusing a client of scope creep destroys professional relationships; the rule engine guarantees safety.
 - **Backboard 70B Cloud Baseline (20.0% accuracy)** reveals that ungrounded raw LLMs default to overly cautious `gray_area` hedging, proving that Python deterministic rules are essential for reliable legal and billing decisions.
 
 ---
