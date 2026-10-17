@@ -33,39 +33,14 @@ Feature 1: SOW Stress Test          Feature 2: Request Checker             Featu
                                • Local JSON audit ledger of every approved change
 ```
 
-### The 4 Core Features at a Glance
+### 🌟 The 4 Core Features
 
 | # | Feature Name | Project Phase | What It Does for You | Real-World Example |
 |:---:|---|---|---|---|
-| **1** | **Two-Tier SOW Stress Test** | **Before You Sign** | Scans your draft contract before you send it to the client. Detects **missing standard clauses** (`M1..Mn`) and highlights **dangerous ambiguous phrasing** (`A1..An`) with one-click bulletproof rewrites. | Catches vague traps like *"minor adjustments as needed"* and rewrites them into *"up to 2 rounds of design revisions, capped at 4 hours total"*. |
-| **2** | **Client Request Checker** | **During the Project** | Takes messy client messages, splits them into atomic requests, matches each against your signed contract, and issues a reliable **traffic-light verdict** (🟢 Included, 🔴 Billable Extra, 🟡 Clarification Needed) with 0% false accusations. | When a client asks to *"fix the mobile menu and also add a blog section"*, it separates them: menu fix is 🟢 Included, blog is 🔴 Billable Extra. |
-| **3** | **Priced Reply & Change-Order Generator** | **Closing the Deal** | Automatically estimates extra hours and fees from your hourly rate, drafting polite pushback emails (Friendly or Formal) and itemized, ready-to-sign Markdown Change Orders. | Generates: *"I'd love to build the blog! That falls outside the agreed 5-page scope. Here is Change Order #1 for 6 hours ($450). Reply 'APPROVED' to proceed."* |
-| **4** | **Live Quota Tracker & Audit Log** | **Throughout the Project** | Tracks how many agreed revision rounds have been consumed (e.g. `1 / 2 rounds used`) and maintains a permanent, local chronological audit trail of all approved requests. | When a client asks for a 3rd round of changes, the system flags that their 2-round quota has been exhausted and converts it to a billable change order. |
-
----
-
-### Detailed Breakdown of the 4 Features
-
-#### 1. 🔍 Two-Tier SOW Stress Test (Before You Sign)
-- **⚠️ Missing Standard Clauses (`M1..Mn`):** Automatically detects protective clauses you forgot to add—such as missing revision caps, undefined deadlines, unlisted deliverables, or omitted client responsibilities.
-- **🔍 Vague & Ambiguous Phrasing (`A1..An`):** Flags dangerous open-ended contract phrases (e.g., *"minor adjustments as needed"*, *"until you are happy"*, *"ongoing support"*), quotes the exact text, explains why it's a trap, and gives you a copyable replacement rewrite.
-
-#### 2. 🚦 Client Request Checker & Rule Engine (During the Project)
-- **Message Splitting:** Splits long, compound client emails into separate, single-action requests.
-- **Contract Matching:** Matches each request against agreed pages, features, and explicit exclusions.
-- **Traffic-Light Verdicts:**
-  - 🟢 **INCLUDED IN CONTRACT**: Covered under existing scope; no extra charge.
-  - 🔴 **EXTRA WORK (BILLABLE)**: Outside agreed scope; requires an extra charge order.
-  - 🟡 **UNCLEAR / NEEDS CLARIFICATION**: Open to dispute; prompts a clarifying question before starting.
-
-#### 3. 📄 Priced Reply & Change-Order Generator (Closing the Deal)
-- **Tone Switcher:** Drafts client responses in your preferred voice (**Friendly** or **Formal**).
-- **Formal Change Order:** Code-generates an itemized Change Order with hours, hourly rate, total fee, and sign-off instructions (`Reply "APPROVED" to proceed`).
-- **Downloadable Markdown:** Saves ready-to-sign agreements directly to `change_order.md`.
-
-#### 4. 📊 Live Quota Tracker & Project Audit Log
-- **Quota Consumption:** Automatically decrements your available revision budget when revision requests are accepted.
-- **Persistent Audit Trail:** Maintains a permanent chronological ledger of every client request, verdict, and timestamp in local project files (`data/projects/{name}.json`).
+| **1** | **Two-Tier SOW Stress Test** | **Before You Sign** | • Detects **missing standard clauses** (`M1..Mn`) like undefined deadlines or omitted revision caps.<br>• Flags **dangerous ambiguous phrasing** (`A1..An`) with one-click bulletproof rewrites. | Catches traps like *"minor adjustments as needed"* and rewrites them to *"up to 2 rounds of design revisions, capped at 4 hours total"*. |
+| **2** | **Client Request Checker** | **During the Project** | • Splits compound client messages into atomic, single-action requests.<br>• Matches requests against agreed pages, features, and exclusions.<br>• Issues **traffic-light verdicts** (🟢 Included, 🔴 Billable Extra, 🟡 Clarification Needed) with 0% false accusations. | When a client asks to *"fix the mobile menu and also add a blog section"*, it separates them: menu fix is 🟢 Included, blog is 🔴 Billable Extra. |
+| **3** | **Priced Reply & Change-Order Generator** | **Closing the Deal** | • Automatically calculates extra billable hours and fees from your hourly rate.<br>• Drafts polite pushback emails in your preferred tone (**Friendly** or **Formal**).<br>• Code-generates itemized, ready-to-sign Markdown Change Orders (`change_order.md`). | Generates: *"I'd love to build the blog! That falls outside the agreed 5-page scope. Here is Change Order #1 for 6 hours ($450). Reply 'APPROVED' to proceed."* |
+| **4** | **Live Quota Tracker & Audit Log** | **Throughout the Project** | • Automatically decrements your available revision budget when changes are approved (e.g. `1 / 2 rounds consumed`).<br>• Maintains a local JSON chronological audit trail of all approved requests. | When a client asks for a 3rd round of changes, the system flags that their 2-round quota is exhausted and prompts a billable change order. |
 
 ---
 
