@@ -107,7 +107,6 @@ To eliminate these risks, Scope-Creep Catcher enforces a strict separation betwe
 
 ## ⚙️ How the Engine Works: The 8-Step Assembly Line (`S1` → `S8`)
 
-### What is the "Engine"?
 When you run Scope-Creep Catcher, there are two main parts:
 1. **The Frontend (`app.py`):** The visual Streamlit dashboard you interact with in your browser.
 2. **The Backend Engine (`engine/`):** The Python processing machinery under the hood that parses contracts, checks quotes, enforces rules, and runs calculations.
