@@ -13,7 +13,7 @@ Freelancers lose thousands of dollars each year to "scope creep" the slow accumu
 **Scope-Creep Catcher** is a private, local-first assistant that turns contracts into deterministic guardrails:
 
 1. **Two-Tier SOW Stress Test (Before You Sign):**
-   - **⚠️ Missing Standard Clauses (`M1..Mn`):** Deterministically scans for absent contract protections—such as missing revision caps, undefined deadlines, unlisted deliverables, or omitted client responsibilities.
+   - **⚠️ Missing Standard Clauses (`M1..Mn`):** Deterministically scans for absent contract protections such as missing revision caps, undefined deadlines, unlisted deliverables, or omitted client responsibilities.
    - **🔍 Vague & Ambiguous Phrasing (`A1..An`):** Uses an expanded contract lexicon and open-weight LLM judgment to flag dangerous subjective terms (e.g., *"minor adjustments as needed"*, *"until you are happy"*, *"ongoing support"*), quoting the exact text and providing bulletproof rewrites.
 
 2. **Client Request Checker & Rule Engine (During the Project):**
@@ -73,7 +73,7 @@ Open your browser at `http://localhost:8501`.
 
 ## 🧠 Architectural Principle: "LLM Reads, Code Decides"
 
-Large Language Models alone cannot be trusted with legal boundaries or billing math—they hallucinate clauses, waffle on boundaries, and drift on numbers. Scope-Creep Catcher uses a strict hybrid design where **the LLM is only a semantic parser, and deterministic Python code makes all legal verdicts and calculations**.
+Large Language Models alone cannot be trusted with legal boundaries or billing math they hallucinate clauses, waffle on boundaries, and drift on numbers. Scope-Creep Catcher uses a strict hybrid design where **the LLM is only a semantic parser, and deterministic Python code makes all legal verdicts and calculations**.
 
 ```
 [ SOW Text + Rate ] ──> S1: Fact Extraction (LLM + Regex Fallback) ──> SOWFacts (Typed JSON)
