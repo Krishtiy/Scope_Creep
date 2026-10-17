@@ -1,0 +1,19 @@
+{
+  "cli_version": "0.11.5",
+  "checkpoint_id": "01M54MT2J3915K3ZFYSCVY4DNX",
+  "strategy": "manual-commit",
+  "branch": "master",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "eval/make_report.py",
+    "eval/run_backboard.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ]
+}
