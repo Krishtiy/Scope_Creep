@@ -50,3 +50,6 @@ desktop.ini
 # Coverage
 .coverage
 htmlcov/
+
+# Internal documentation & working notes
+docs/

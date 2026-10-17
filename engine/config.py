@@ -27,9 +27,8 @@ for _d in [RAW_DIR, PROJECTS_DIR, GOLD_DIR]:
     _d.mkdir(parents=True, exist_ok=True)
 
 # ── Model settings ────────────────────────────────────────────────────────────
-# Primary model: gemma2:2b (installed, fast on local hardware)
-# Future comparison model: qwen2.5:7b (noted in IMPLEMENTATION_PLAN.md)
-MODEL    : str = "gemma2:2b"
+# Primary model: qwen2.5:3b
+MODEL    : str = "qwen2.5:3b"
 NUM_CTX  : int = 8192      # context window for SOW processing
 SEED     : int = 42        # deterministic outputs across runs
 MAX_TOKENS_DEFAULT : int = 700

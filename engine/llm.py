@@ -51,25 +51,30 @@ def call_json(
     last_err: Exception | None = None
 
     for attempt in range(2):           # original + one retry
+        print(f"[LLM] {step} | attempt {attempt + 1}/2 | model={resolved_model} | max_tokens={max_tokens}", flush=True)
         t0 = time.perf_counter()
         try:
+            print(f"[LLM] Sending request to Ollama...", flush=True)
             response = ollama.chat(
                 model=resolved_model,
                 messages=msgs,
                 format=schema.model_json_schema(),
                 options={
                     "temperature": 0,
+                    "repeat_penalty": 1.1,
                     "seed": SEED,
                     "num_ctx": NUM_CTX,
                     "num_predict": max_tokens,
                 },
             )
         except Exception as exc:
+            print(f"[LLM] ERROR on attempt {attempt + 1}: {exc}", flush=True)
             raise RuntimeError(
                 f"{step}: Ollama call failed (attempt {attempt + 1}): {exc}"
             ) from exc
 
         elapsed = time.perf_counter() - t0
+        print(f"[LLM] {step} done in {elapsed:.2f}s | prompt_tokens={response.prompt_eval_count} | output_tokens={response.eval_count}", flush=True)
         METRICS.record(
             step=step,
             model=resolved_model,
@@ -79,12 +84,17 @@ def call_json(
         )
 
         raw_content: str = response.message.content
+        print(f"[LLM] Raw response ({len(raw_content)} chars): {raw_content[:200]}...", flush=True)
         try:
-            return schema.model_validate_json(raw_content)
+            parsed = schema.model_validate_json(raw_content)
+            print(f"[LLM] Schema validation OK", flush=True)
+            return parsed
         except ValidationError as exc:
             last_err = exc
+            print(f"[LLM] Schema validation FAILED (attempt {attempt + 1}): {exc.errors()[:3]}", flush=True)
             # On first failure: append error context and retry
             if attempt == 0:
+                print(f"[LLM] Retrying with error context...", flush=True)
                 msgs += [
                     {"role": "assistant", "content": raw_content},
                     {

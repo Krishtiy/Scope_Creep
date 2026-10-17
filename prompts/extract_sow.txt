@@ -1,14 +1,34 @@
-You extract facts from a freelance Statement of Work (SOW). Return JSON matching the schema exactly.
+You extract structured facts from a freelance Statement of Work (SOW), email agreement, or project brief.
+Return a single JSON object with ALL of the following fields populated.
 
-Rules:
-- Use null (or an empty list) when the SOW does not state something. NEVER guess or infer.
-- Missing is NOT the same as unlimited. If revision rounds are not mentioned, set revision_rounds to null.
-- Every *_quote field must be copied CHARACTER FOR CHARACTER from the SOW text. Do not paraphrase.
-- pages = the specific page names or screen names the SOW explicitly lists (e.g. "Home, About, Contact").
-- deliverables = concrete things to be delivered (e.g. "5 blog posts", "logo files", "mobile app").
-- excluded = things the SOW explicitly says are NOT included.
-- client_responsibilities = things the SOW says the client must provide or do.
-- If a field is not mentioned in the SOW, leave it null or empty list — do not fill it with assumptions.
-- revision_definition: only populate if the SOW defines what counts as a revision.
+REQUIRED FIELDS — fill every one, even if the value is null or []:
 
-Be conservative. It is better to return null than to guess.
+  "project"               : string or null   — the project title or main subject (e.g. "Portfolio Site", "Brochure Website", "Logo & Brand Package for Thornwood Coffee")
+  "pages"                 : list of strings  — website pages or mobile app screens explicitly included (e.g. ["Home","Menu"] or ["who we are", "what we do", "our pricing", "reach out"]).
+                                              * For non-web/non-app projects (branding, logos, video editing): set to [].
+                                              * Do NOT put document deliverables like "one-page guide" or "PDF style guide" into pages.
+  "revision_rounds"       : integer or null  — the NUMBER of revision rounds stated (e.g. 1, 2, 3, 4).
+                                              * Look for "X rounds", "X feedback cycles", "two of those built in", "one shot at that".
+                                              * Extract just the integer. null if not mentioned.
+  "revision_definition"   : string or null   — how the SOW defines a "revision", if stated. null otherwise.
+  "deliverables"          : list of strings  — concrete products, outcomes, systems, or assets the freelancer will build or deliver.
+                                              * Include the core product (e.g. ["four-page brochure website"], ["portfolio site"], ["logo package"]) and key files/assets.
+                                              * Do not leave empty if the text states what is being built or delivered.
+  "excluded"              : list of strings  — items explicitly outside the scope, not included, or that will be quoted separately.
+                                              * Look for "outside the scope", "not included", "will be quoted separately", "separate conversation".
+                                              * If an item "will be quoted separately", it MUST be listed here in excluded!
+                                              * POLARITY RULE: If the text says "X is welcome / built in, but Y will be quoted separately", ONLY Y is excluded! NEVER put items that are "welcome" or "built in" into excluded.
+  "deadline"              : string or null   — any deadline or launch date mentioned (e.g. "end of Q1 (March 31)"). null if not stated.
+  "payment_terms"         : string or null   — payment schedule or terms (e.g. "Fifty percent due to start, remainder on approval", "$8,000 net-30"). null if not stated.
+  "client_responsibilities": list of strings — concrete materials, content, or actions the CLIENT must supply or perform. Set to [] if the SOW does not mention any client obligations.
+  "pages_quote"           : string or null   — the EXACT sentence(s) from the SOW that lists the pages/screens. null for non-web projects.
+  "revision_quote"        : string or null   — the EXACT sentence(s) from the SOW about revisions or feedback cycles. Copy verbatim.
+  "excluded_quote"        : string or null   — the EXACT sentence(s) in the SOW stating what is excluded, outside scope, or quoted separately. Copy verbatim.
+
+IMPORTANT RULES:
+- You MUST output ALL 12 fields above. Do not skip any.
+- Understand both formal contracts AND casual, conversational agreements (e.g. emails, Slack agreements).
+- For list fields with nothing to add, use [] (empty list).
+- For string/integer fields with nothing to add, use null.
+- *_quote fields: copy the text CHARACTER FOR CHARACTER from the SOW. Do not paraphrase.
+- Do NOT guess. If a field is not in the SOW, set it to null or [].

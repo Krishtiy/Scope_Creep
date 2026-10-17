@@ -1,6 +1,9 @@
 patterns:
   # High severity — almost always cause disputes
-  - {re: "\\bminor (revisions?|changes?|tweaks?)\\b",        severity: high,   tag: undefined_quantity}
+  - {re: "\\bminor\\s+(?:\\w+\\s+)?(revisions?|changes?|tweaks?|adjustments?|edits?|fixes?)\\b", severity: high,   tag: undefined_quantity}
+  - {re: "\\bwithin reason\\b",                                 severity: high,   tag: subjective_term}
+  - {re: "\\b(?:discussed\\s+)?verbally\\b",                   severity: high,   tag: verbal_agreement}
+  - {re: "\\b(no deadline|not written in stone)\\b",           severity: high,   tag: no_deadline}
   - {re: "\\ba few\\b",                                       severity: high,   tag: undefined_quantity}
   - {re: "\\bunlimited\\b",                                   severity: high,   tag: no_limit}
   - {re: "\\bincluding but not limited to\\b",               severity: high,   tag: open_ended_list}
@@ -16,10 +19,11 @@ patterns:
   - {re: "\\b(fast|quick|asap|prompt)\\b",                   severity: medium, tag: no_deadline}
   - {re: "\\bsimilar (to|style)\\b",                         severity: medium, tag: subjective_term}
   - {re: "\\bprofessional (look|feel|quality)\\b",           severity: medium, tag: subjective_term}
-  - {re: "\\bminor (adjustments?|edits?|fixes?)\\b",         severity: medium, tag: undefined_quantity}
   - {re: "\\bin a timely (manner|fashion)\\b",               severity: medium, tag: no_deadline}
   - {re: "\\bnet[ -]?90\\b",                                 severity: medium, tag: payment_risk}
   - {re: "\\bupon (final approval|completion|acceptance)\\b", severity: medium, tag: payment_risk}
+  - {re: "\\bsign off on the final\\b",                        severity: medium, tag: undefined_milestone}
+  - {re: "\\bone shot\\b",                                     severity: medium, tag: colloquial_limit}
 
   # Low severity — worth noting, rarely cause major disputes
   - {re: "\\bsome\\b",                                        severity: low,    tag: undefined_quantity}

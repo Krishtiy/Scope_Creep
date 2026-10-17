@@ -67,3 +67,46 @@ class TestSeverityRanking:
         assert _severity_rank("high") < _severity_rank("medium")
         assert _severity_rank("medium") < _severity_rank("low")
         assert _severity_rank("low") < _severity_rank("unknown")
+
+
+class TestRunStressTest:
+    def test_missing_cards_and_vague_cards_have_distinct_ids(self):
+        from unittest.mock import patch
+        from engine.schemas import StressIssue, StressResult
+        from engine.stress_test import run_stress_test
+
+        sow_text = "We will make minor adjustments as needed."
+        facts = SOWFacts(
+            pages=["Home"],
+            deliverables=["Website"],
+            revision_rounds=None,  # Missing
+            deadline=None,         # Missing
+            excluded=["Hosting"],
+            payment_terms="50/50",
+            client_responsibilities=["Assets"],
+        )
+        mock_llm_result = StressResult(issues=[
+            StressIssue(
+                quote="minor adjustments",
+                kind="vague",
+                why_risky="Ambiguous limit",
+                freelancer_reading="few tweaks",
+                client_reading="endless changes",
+                severity="high",
+                suggested_rewrite="Up to 2 tweaks",
+            )
+        ])
+        with patch("engine.stress_test.call_json", return_value=mock_llm_result):
+            issues, ids = run_stress_test(sow_text, facts)
+
+        # Check that missing issues (M1, M2) and in-text issue (A1) are present
+        assert any(id.startswith("M") for id in ids)
+        assert any(id.startswith("A") for id in ids)
+        assert len(issues) == len(ids)
+
+        missing_issues = [iss for iss in issues if iss.kind == "missing"]
+        vague_issues = [iss for iss in issues if iss.kind != "missing"]
+
+        assert len(missing_issues) == 2  # revision_rounds and deadline
+        assert len(vague_issues) >= 1    # "minor adjustments"
+

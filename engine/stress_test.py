@@ -135,8 +135,8 @@ def run_stress_test(
     # 2. LLM judgement
     system = _load_prompt()
     candidate_note = (
-        f"\n\nA scanner found these candidate phrases: {candidate_phrases}. "
-        "Confirm which are truly risky, reject false positives, and add any the scanner missed."
+        f"\n\nA scanner found these candidate vague phrases in the text: {candidate_phrases}. "
+        "Evaluate which are genuinely risky and quote the exact phrase."
         if candidate_phrases
         else ""
     )
@@ -150,28 +150,67 @@ def run_stress_test(
         model=model,
         max_tokens=800,
     )
-    llm_issues = llm_result.issues
+    # Only keep in-text ambiguity issues (vague, undefined_term) from the LLM.
+    # Structural missing issues are handled deterministically by _missing_cards(facts).
+    llm_issues = [i for i in llm_result.issues if i.kind != "missing"]
 
-    # 3. Missing-item checks (deterministic)
+    # 3. Missing-item checks (deterministic from SOW facts)
     missing_issues = _missing_cards(facts)
 
-    # Merge all issues
-    all_issues = list(llm_issues) + missing_issues
-
-    # Verify quotes; drop failures (missing-kind have no quote, skip)
-    verified: list[StressIssue] = []
-    for issue in all_issues:
-        if issue.kind == "missing" or issue.quote is None:
-            verified.append(issue)
-        else:
+    # Verify and rescue quotes for LLM issues
+    verified_llm_issues: list[StressIssue] = []
+    for issue in llm_issues:
+        if issue.quote:
             check = verify_quote(issue.quote, sow_text)
             if check.ok:
-                verified.append(issue)
-            # Silently drop issues with unverifiable quotes
+                verified_llm_issues.append(issue)
+                continue
+        # If quote is None or didn't verify, try to rescue from lexicon hits
+        matched_hit = None
+        for hit in lex_hits:
+            text_context = (issue.why_risky + " " + issue.freelancer_reading + " " + issue.suggested_rewrite).lower()
+            if hit.quote.lower() in text_context:
+                matched_hit = hit
+                break
+        if matched_hit:
+            issue.quote = matched_hit.quote
+            verified_llm_issues.append(issue)
+        elif issue.quote is not None:
+            check = verify_quote(issue.quote, sow_text)
+            if check.ok:
+                verified_llm_issues.append(issue)
 
-    # Rank and cap at 5
-    verified.sort(key=lambda i: _severity_rank(i.severity))
-    top5 = verified[:5]
+    # If any high-severity lexicon hits were not evaluated by LLM, create cards
+    used_quotes = {i.quote.lower() for i in verified_llm_issues if i.quote}
+    for hit in lex_hits:
+        if hit.quote.lower() not in used_quotes and hit.severity == "high":
+            verified_llm_issues.append(
+                StressIssue(
+                    quote=hit.quote,
+                    kind="vague",
+                    why_risky=f"The phrase '{hit.quote}' is ambiguous and frequently leads to scope disputes.",
+                    freelancer_reading=f"Interpreted reasonably by the freelancer.",
+                    client_reading=f"Interpreted broadly by the client.",
+                    severity="high",
+                    suggested_rewrite=f"Replace '{hit.quote}' with an explicit, quantifiable limit.",
+                )
+            )
+            used_quotes.add(hit.quote.lower())
 
-    ids = [f"A{i + 1}" for i in range(len(top5))]
-    return top5, ids
+    # Sort in-text issues by severity and keep top 5
+    verified_llm_issues.sort(key=lambda i: _severity_rank(i.severity))
+    top_in_text = verified_llm_issues[:5]
+
+    # Sort missing issues by severity
+    missing_issues.sort(key=lambda i: _severity_rank(i.severity))
+
+    # All issues returned: deterministic missing clauses + top in-text issues
+    all_issues = missing_issues + top_in_text
+
+    # Generate IDs: M1..Mn for missing clauses, A1..An for in-text ambiguities
+    ids = (
+        [f"M{i + 1}" for i in range(len(missing_issues))]
+        + [f"A{i + 1}" for i in range(len(top_in_text))]
+    )
+    return all_issues, ids
+
