@@ -40,7 +40,7 @@ Freelancers lose thousands of dollars each year to "scope creep" the slow accumu
 - **Git**
 
 ### 2. Pull Local Open-Weight Model
-Scope-Creep Catcher is optimized for fast, accurate local CPU/GPU execution using **Qwen 2.5 (3B)** or **Gemma 2 (2B)**:
+Scope-Creep Catcher is optimized for fast, accurate local CPU execution using **Qwen 2.5 (3B)** :
 ```bash
 ollama pull qwen2.5:3b
 ```
