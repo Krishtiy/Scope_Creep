@@ -77,12 +77,10 @@ def load_sow_text(sow_file: str) -> str:
     return p.read_text(encoding="utf-8")
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Backboard AI eval harness")
-    parser.add_argument("--split", choices=["dev", "test"], default="test", help="Dataset split")
-    parser.add_argument("--model", default="meta-llama/llama-3.1-70b-instruct", help="Model name on Backboard")
-    args = parser.parse_args()
+import asyncio
 
+
+async def run_eval(args) -> None:
     api_key = get_api_key()
     if not api_key:
         print_setup_instructions()
@@ -113,13 +111,14 @@ def main() -> None:
         "Return valid JSON with key 'verdicts': list of strings."
     )
 
+    assistant_id = None
     try:
-        assistant = client.create_assistant(
+        assistant = await client.create_assistant(
             name=f"scope-eval-{args.split}",
             description="Synthetic evaluation assistant for Scope-Creep Catcher",
             system_prompt=system_prompt,
         )
-        assistant_id = assistant.id
+        assistant_id = getattr(assistant, "assistant_id", getattr(assistant, "id", None))
     except Exception as e:
         print(f"Failed to create assistant on Backboard: {e}")
         sys.exit(1)
@@ -130,12 +129,18 @@ def main() -> None:
             msg = case["message"]
             user_content = f"SOW:\n{sow_text}\n\nClient message:\n{msg}"
 
-            thread = client.create_thread(assistant_id=assistant_id)
-            response = client.send_message(
-                thread_id=thread.id,
-                content=user_content,
-                model=args.model,
-            )
+            thread = await client.create_thread(assistant_id=assistant_id)
+            thread_id = getattr(thread, "thread_id", getattr(thread, "id", None))
+
+            send_kwargs = {
+                "thread_id": thread_id,
+                "content": user_content,
+                "json_output": True,
+            }
+            if args.model:
+                send_kwargs["model_name"] = args.model
+
+            response = await client.send_message(**send_kwargs)
 
             # Process response and extract predictions
             reply_text = getattr(response, "content", str(response))
@@ -169,7 +174,8 @@ def main() -> None:
         print("Confusion Matrix:")
         print(format_confusion_matrix_md(cm))
 
-        out_path = RAW_DIR / f"backboard_{args.split}.json"
+        model_slug = args.model.replace("/", "_").replace(":", "-")
+        out_path = RAW_DIR / f"backboard_{model_slug}_{args.split}.json"
         with out_path.open("w", encoding="utf-8") as fh:
             json.dump({
                 "model": args.model,
@@ -182,10 +188,20 @@ def main() -> None:
         print(f"\nSaved raw results to: {out_path}")
 
     finally:
-        try:
-            client.delete_assistant(assistant_id=assistant_id)
-        except Exception:
-            pass
+        if assistant_id:
+            try:
+                await client.delete_assistant(assistant_id=assistant_id)
+            except Exception:
+                pass
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Backboard AI eval harness")
+    parser.add_argument("--split", choices=["dev", "test"], default="test", help="Dataset split")
+    parser.add_argument("--model", default="meta-llama/llama-3.1-70b-instruct", help="Model name on Backboard")
+    args = parser.parse_args()
+
+    asyncio.run(run_eval(args))
 
 
 if __name__ == "__main__":
