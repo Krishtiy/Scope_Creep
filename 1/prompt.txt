@@ -1,0 +1,37 @@
+Go through the project first to understand the context, once that is done we will proceed with our next task
+
+---
+
+Go through the project first to understand the context, once that is done we will proceed with our next task
+
+---
+
+i want to compare my current model thati am using with gemma via backboard, how do i proceed .from starting i havnt signed up in backboard either.
+
+---
+
+I have setup backboard, now I want you to compare only the local models which are qwen2.5:3b and gemma2:2b, using backboard to show a comparison and figure out which one to use
+
+---
+
+I have setup backboard, now I want you to compare only the local models which are qwen2.5:3b and gemma2:2b, using backboard to show a comparison and figure out which one to use, do run_backboard
+
+---
+
+So there is no backboard report or matrix ??
+
+---
+
+We were suppose to run the local models which are qwen and gemma as i mentioned previously on backboard is that not possible ? What is the purpose of running meta-llama/llama-3.1-70b-instruct
+
+---
+
+oh ok but it is required by the problem statement to us epartner catgeories right but also written to maintain the open weiht and offline part so the use of backboard you just did will be contradicting ?
+
+---
+
+ok works so where are the reports of backboard and the final evaluation metrucs and does it clearly describe what we did while maintaining the constraints? also update the readme  it should include how decision making at each step , and all teh partner cat we included what we used in final prodict how we integrated them etc .
+
+---
+
+what excalty did we use in our logic for the final project qwen or gemma?
