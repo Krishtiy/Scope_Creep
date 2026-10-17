@@ -106,7 +106,7 @@ Large Language Models alone cannot be trusted with legal boundaries or billing m
 ### 📋 Step-by-Step Decision-Making Pipeline (`S1` → `S8`)
 
 1. **`S1: Structured SOW Fact Extraction` (`engine/sow.py`)**
-   - **Input:** Raw Statement of Work text and client rate.
+   - **Input:** Raw Statement of Work text and rate.
    - **Logic:** The LLM extracts 12 structured fields into a strictly validated Pydantic schema (`SOWFacts`: pages, revision rounds, deliverables, exclusions, deadline, payment terms, client responsibilities).
    - **Fallback & Verification:** If the model omits standard fields, deterministic regex extractors fill the blanks without overwriting valid data. Every cited quote (`pages_quote`, `revision_quote`, `excluded_quote`) is strictly verified against source text using Unicode NFKC normalization and RapidFuzz alignment. Unverifiable citations are automatically nulled out to prevent hallucinated contractual clauses.
 
